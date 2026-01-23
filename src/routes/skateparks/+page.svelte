@@ -1,0 +1,749 @@
+<!-- src/routes/skateparks/+page.svelte -->
+
+<script>
+  const skateparks = [
+    {
+      name: "Bluffdale Skatepark",
+      city: "Bluffdale",
+      status: "Complete",
+      sizeSqFt: "9000",
+      address: "15400 S 1200 W, Bluffdale, UT 84065",
+      designedBy: "American Ramp Company",
+      builtBy: "Pivot Custom (ARC)",
+      yearBuilt: "2023",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public"
+    },
+    {
+      name: "Bountiful Skatepark",
+      city: "Bountiful",
+      status: "Complete",
+      sizeSqFt: "12000",
+      address: "359 W 740 S, Bountiful, UT 84010",
+      designedBy: "Spohn Ranch",
+      builtBy: "Stapp Construction",
+      yearBuilt: "2023",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public"
+    },
+    {
+      name: "Constitution Park Skatepark",
+      city: "Brigham City",
+      status: "Complete",
+      sizeSqFt: "10500",
+      address: "450 E 700 S, Brigham City, UT 84302",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "1999",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public"
+    },
+    {
+  name: "Coalville Skatepark",
+  city: "Coalville",
+  status: "Complete",
+  sizeSqFt: "4400",
+  address: "54 Center St, Coalville, UT 84017",
+  designedBy: "Skatewave",
+  builtBy: "Skatewave",
+  yearBuilt: "Unknown",
+  surface: "Steel",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Delta Skatepark",
+  city: "Delta",
+  status: "Complete",
+  sizeSqFt: "17000",
+  address: "115 N 100 W, Delta, UT 84624",
+  designedBy: "Unknown",
+  builtBy: "Unknown",
+  yearBuilt: "Unknown",
+  surface: "Pre-fab Concrete",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Ephraim Skatepark",
+  city: "Ephraim",
+  status: "Complete",
+  sizeSqFt: "26000",
+  address: "650 S 100 E, Ephraim, UT 84627",
+  designedBy: "Grindline Skateparks",
+  builtBy: "Grindline Skateparks",
+  yearBuilt: "2023",
+  surface: "Concrete",
+  lights: "Yes",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Firefly Skatepark",
+  city: "Fairfield",
+  status: "Complete",
+  sizeSqFt: "10000",
+  address: "2223 W Wander Ln, Fairfield, UT 84013",
+  designedBy: "Evergreen Skateparks",
+  builtBy: "Evergreen Skateparks",
+  yearBuilt: "2024",
+  surface: "Concrete",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Farmington Skatepark",
+  city: "Farmington",
+  status: "Complete",
+  sizeSqFt: "3600",
+  address: "1384 S Frontage Rd, Farmington, UT 84025",
+  designedBy: "Unknown",
+  builtBy: "Unknown",
+  yearBuilt: "Unknown",
+  surface: "Concrete",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Fillmore Skatepark",
+  city: "Fillmore",
+  status: "Complete",
+  sizeSqFt: "11900",
+  address: "434 N 100 E St, Fillmore, UT 84631",
+  designedBy: "Unknown",
+  builtBy: "Unknown",
+  yearBuilt: "Unknown",
+  surface: "Steel",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Grantsville Skatepark",
+  city: "Grantsville",
+  status: "Complete",
+  sizeSqFt: "4000",
+  address: "60 E Cherry St, Grantsville, UT 84029",
+  designedBy: "Unknown",
+  builtBy: "Unknown",
+  yearBuilt: "Unknown",
+  surface: "Concrete",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Heber City Skatepark",
+  city: "Heber City",
+  status: "Complete",
+  sizeSqFt: "26000",
+  address: "758 W Midway Ln, Heber City, UT 84032",
+  designedBy: "Wally Hollyday Designs",
+  builtBy: "California Skateparks",
+  yearBuilt: "2008",
+  surface: "Concrete",
+  lights: "Yes",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Herriman Skatepark",
+  city: "Herriman",
+  status: "Complete",
+  sizeSqFt: "20000",
+  address: "5900 13400 S, Herriman, UT 84096",
+  designedBy: "Wally Hollyday Designs",
+  builtBy: "California Skateparks",
+  yearBuilt: "2007",
+  surface: "Concrete",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Holladay Skatepark",
+  city: "Holladay",
+  status: "Complete",
+  sizeSqFt: "8000",
+  address: "4621 Holladay Blvd E, Holladay, UT 84117",
+  designedBy: "Spohn Ranch",
+  builtBy: "Spohn Ranch",
+  yearBuilt: "2022",
+  surface: "Concrete",
+  lights: "Yes",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Hyrum Skatepark",
+  city: "Hyrum",
+  status: "Complete",
+  sizeSqFt: "30000",
+  address: "1494 E 300 S, Hyrum, UT 84319",
+  designedBy: "Hunger Skateparks",
+  builtBy: "Hunger Skateparks",
+  yearBuilt: "2022",
+  surface: "Concrete",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Kanab Skatepark",
+  city: "Kanab",
+  status: "Complete",
+  sizeSqFt: "12000",
+  address: "566 N 100 E, Kanab, UT 84741",
+  designedBy: "American Ramp Company",
+  builtBy: "American Ramp Company",
+  yearBuilt: "2016",
+  surface: "Concrete",
+  lights: "Yes",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Lehi Skatepark",
+  city: "Lehi",
+  status: "Complete",
+  sizeSqFt: "11000",
+  address: "2000 W 2100 N, Lehi, UT 84043",
+  designedBy: "Spohn Ranch",
+  builtBy: "Spohn Ranch",
+  yearBuilt: "2017",
+  surface: "Concrete",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Logan Skatepark",
+  city: "Logan",
+  status: "Complete",
+  sizeSqFt: "17000",
+  address: "449 Center Ave, Logan, UT 84321",
+  designedBy: "Site Design Group",
+  builtBy: "Unknown",
+  yearBuilt: "Unknown",
+  surface: "Concrete",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Magna Skatepark",
+  city: "Magna",
+  status: "Complete",
+  sizeSqFt: "10200",
+  address: "S 8950 W St, Magna, UT 84044",
+  designedBy: "Skatewave",
+  builtBy: "Skatewave",
+  yearBuilt: "Unknown",
+  surface: "Steel",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Millcreek Common",
+  city: "Millcreek",
+  status: "Planning Phase",
+  sizeSqFt: "0",
+  address: "1354 E Chambers Ave, Millcreek, UT 84106",
+  designedBy: "Evergreen Skateparks",
+  builtBy: "Evergreen Skateparks",
+  yearBuilt: "Unknown",
+  surface: "Concrete",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Moab Skatepark",
+  city: "Moab",
+  status: "Complete",
+  sizeSqFt: "6680",
+  address: "400 N 100 W, Moab, UT 84532",
+  designedBy: "Unknown",
+  builtBy: "Unknown",
+  yearBuilt: "Unknown",
+  surface: "Concrete",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "North Ogden Skatepark",
+  city: "North Ogden",
+  status: "Complete",
+  sizeSqFt: "7200",
+  address: "530 E 2650 N, North Ogden, UT 84414",
+  designedBy: "Unknown",
+  builtBy: "Unknown",
+  yearBuilt: "Unknown",
+  surface: "Concrete",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Orem Skatepark",
+  city: "Orem",
+  status: "Complete",
+  sizeSqFt: "23000",
+  address: "355 1200 W, Orem, UT 84057",
+  designedBy: "Purkiss Rose",
+  builtBy: "Unknown",
+  yearBuilt: "2002",
+  surface: "Concrete",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+},
+{
+  name: "Park City Skatepark",
+  city: "Park City",
+  status: "Complete",
+  sizeSqFt: "31000",
+  address: "1220 Park Ave, Park City, UT 84060",
+  designedBy: "Site Design Group",
+  builtBy: "Homes and Narver Engineering Group",
+  yearBuilt: "Unknown",
+  surface: "Concrete",
+  lights: "No",
+  type: "Outdoor",
+  access: "Public"
+}
+
+  ];
+</script>
+
+<svelte:head>
+  <title>Skateparks | Utah Skatepark Advocacy Group</title>
+  <meta name="description" content="Community organizations supported by the Utah Skatepark Advocacy Group." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Raleway:wght@200;300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
+<!-- NAV -->
+<nav style="
+  background:#1a1a1a;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:50;
+">
+  <div style="
+    height:50px;
+    display:flex;
+    align-items:center;
+    padding:0 20px;
+  ">
+    <!-- Logo (far left, vertically centered) -->
+    <a href="https://www.utahskateparkadvocacygroup.com/"
+       target="_blank"
+       rel="noopener"
+       style="display:flex;align-items:center;margin-right:25px;">
+      <img
+        src="/icon-mini.png"
+        alt="Utah Skatepark Advocacy Group"
+        style="width:32px;height:32px;display:block;"
+      />
+    </a>
+
+    <!-- Navigation -->
+    <div style="display:flex;align-items:center;gap:20px;">
+      <a href="/" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Home</a>
+      <a href="/skateparks" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Skateparks</a>
+      <a href="/resources" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Resources</a>
+      <a href="/design-builders" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Design & Builders List</a>
+      <a href="/community" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Community</a>
+      <a href="/news" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">News & Media</a>
+      <a href="/about" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">About</a>
+    </div>
+
+    <!-- Social icons pushed to far right -->
+    <div style="
+      margin-left:auto;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    ">
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="heroWrap">
+  <img
+    src="/skatepark-hero.jpg"
+    alt="Utah Skateparks"
+    width="980"
+    height="352"
+    class="heroImg"
+  />
+
+  <h1 class="heroTitle">Utah Skateparks</h1>
+</section>
+
+<!-- INFO / FILTER BAR -->
+<section class="infoWrap">
+
+  <!-- Help text + button -->
+  <div class="infoTop">
+    <div class="infoText">
+      <div class="infoTitle">
+        Help Us Keep Your Skatepark Info Accurate!
+      </div>
+      <div class="infoDesc">
+        Got updates or spot any missing details about your skatepark?<br />
+        Let us know so we can keep the community informed!
+      </div>
+    </div>
+
+    <a
+      href="#"
+      class="infoBtn"
+    >
+      Request Info Update
+    </a>
+  </div>
+
+  <!-- Filter bar -->
+  <div class="filterBar">
+    <div class="filterLeft">
+      &#128305; Filters
+    </div>
+
+    <div class="filterRight">
+      Skateparks displayed: <strong>84</strong>
+      <span class="filterIcon">&#9660;</span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- GRID -->
+<section class="pageWrap">
+  <div class="cardsGrid">
+    {#each skateparks as p}
+      <div class="card">
+        <!-- photo area -->
+        <div class="photoArea">
+          <div class="photoBtns">
+            <button type="button" class="pillBtn">+ Add Photo</button>
+            <button type="button" class="pillsubmitBtn">Submit</button>
+          </div>
+        </div>
+
+        <!-- detail box -->
+        <div class="detailBox">
+          <div class="titleBlock">
+            <div class="parkName">{p.name}</div>
+            <div class="parkCity">{p.city}</div>
+          </div>
+
+          <div class="twoCol">
+            <div>
+              <div class="label">Status:</div>
+              <div class="value">{p.status}</div>
+            </div>
+            <div>
+              <div class="label">Size (Sq. Ft):</div>
+              <div class="value">{p.sizeSqFt}</div>
+            </div>
+          </div>
+
+          <div class="oneCol">
+            <div class="label">Address:</div>
+            <div class="value">{p.address}</div>
+          </div>
+
+          <div class="oneCol">
+            <div class="label">Designed by:</div>
+            <div class="value">{p.designedBy}</div>
+          </div>
+
+          <div class="oneCol">
+            <div class="label">Built by:</div>
+            <div class="value">{p.builtBy}</div>
+          </div>
+
+          <div class="oneCol">
+            <div class="label">Year Built:</div>
+            <div class="value">{p.yearBuilt}</div>
+          </div>
+
+          <div class="twoCol">
+            <div>
+              <div class="label">Surface:</div>
+              <div class="value">{p.surface}</div>
+            </div>
+            <div>
+              <div class="label">Lights?</div>
+              <div class="value">{p.lights}</div>
+            </div>
+          </div>
+
+          <div class="twoCol">
+            <div>
+              <div class="label">Type:</div>
+              <div class="value">{p.type}</div>
+            </div>
+            <div>
+              <div class="label">Access:</div>
+              <div class="value">{p.access}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {/each}
+  </div>
+</section>
+
+<style>
+  * { box-sizing: border-box; }
+
+  .heroWrap {
+    position: relative;
+    max-width: 980px;
+    margin: 40px auto 0;
+    padding: 0 0;
+  }
+
+  .heroImg {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .heroTitle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font: 400 56px Oswald, sans-serif;
+    margin: 0;
+    background: rgba(230, 230, 230, 0.85);
+    padding: 12px 24px;
+  }
+
+  .pageWrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0px 0px 0px;
+  }
+
+  .cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .card {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top "photo" block: 283x236, black */
+  .photoArea {
+    width: 260px;
+    height: 236px;
+    margin: 0px;
+    background: #2F2E2E;
+    position: relative;
+  }
+
+  .photoBtns {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 12px;
+  }
+
+  /* Buttons: 132x68, pill, rgb(255,192,58) */
+  .pillBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;                   /* space between + and text */
+    background: rgb(255, 192, 58);
+    color: #000;
+    font: 700 14px Raleway, sans-serif;
+    padding: 10px 14px;
+    border-radius: 24px;        /* pill shape */
+    border: 2px solid #000;     /* black outline edge */
+    cursor: pointer;
+    text-transform: none;
+    text-decoration: none;
+  }
+
+  .pillBtn:hover { opacity: 0.9; }
+
+    /* Buttons: 132x68, pill, rgb(255,192,58) */
+  .pillsubmitBtn { 
+    margin-left: 30px;
+    width: 84px;
+    height: 37px;
+    border-radius: 34px;
+    background: rgb(255, 192, 58);
+    border: none;
+    font: 700 14px Raleway, sans-serif;
+    color: #000;
+    cursor: pointer;
+  }
+
+  .pillBtn:hover { opacity: 0.9; }
+
+
+  /* Detail box: 291x474, gray */
+  .detailBox {
+    width: 260px;
+    height: 474px;
+    background: #DFDFDF;
+    padding: 14px 14px 16px;
+    margin: 0 auto;
+  }
+
+  .titleBlock {
+    margin-bottom: 12px;
+  }
+
+  /* Name: Oswald 22px weight 400 */
+  .parkName {
+    font: 400 22px Oswald, sans-serif;
+    color: #000;
+    margin: 0;
+  }
+
+  /* City: Raleway 14px weight 400 */
+  .parkCity {
+    font: 400 14px Raleway, sans-serif;
+    color: #000;
+    margin-top: 2px;
+  }
+
+  /* Labels: Raleway 14px weight 700 */
+  .label {
+    font: 700 14px Raleway, sans-serif;
+    color: #000;
+    margin-top: 10px;
+  }
+
+  /* Values: Raleway 14px weight 400 */
+  .value {
+    font: 400 14px Raleway, sans-serif;
+    color: #000;
+    margin-top: 2px;
+  }
+
+  .twoCol {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+  }
+
+  .oneCol {
+    display: block;
+  }
+  .infoWrap {
+  max-width: 980px;
+  margin: 16px auto 16px;   /* reduce top & bottom */
+  padding: 0 20px;
+}
+
+/* Top help row */
+.infoTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.infoTitle {
+  font: 400 22px Oswald, sans-serif;
+  margin-bottom: 6px;
+}
+
+.infoDesc {
+  font: 400 14px/1.5 Raleway, sans-serif;
+  color: #000;
+}
+
+/* Request button */
+.infoBtn {
+  background: #000;
+  color: #fff;
+  font: 400 14px Raleway, sans-serif;
+  padding: 10px 14px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.infoBtn:hover {
+  opacity: 0.9;
+}
+
+/* Filter bar */
+.filterBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  padding: 0 20px;
+  background: #fff;
+  border: 2px solid #d9d9d9;
+
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.08);
+}
+
+
+.filterLeft {
+  font: 700 16px Raleway, sans-serif;
+}
+
+.filterRight {
+  font: 400 16px Raleway, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filterIcon {
+  font-size: 12px;
+}
+
+
+  @media (max-width: 980px) {
+    .cardsGrid {
+      grid-template-columns: repeat(2, 291px);
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cardsGrid {
+      grid-template-columns: 291px;
+      justify-content: center;
+      
+    }
+  }
+</style>
