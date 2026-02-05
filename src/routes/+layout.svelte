@@ -1,5 +1,5 @@
 <script lang="ts">
-  import "./app.css"; // keep if your app.css is in src/app.css; remove if already imported elsewhere
+  import "./app.css";
   import { page } from "$app/stores";
   import { afterNavigate } from "$app/navigation";
 
@@ -10,15 +10,20 @@
     { label: "Skateparks", href: "/skateparks" },
     { label: "Planning and Resources", href: "/resources" },
     { label: "Community", href: "/community" },
-    { label: "Contact Us", href: "#contact" }
+    // IMPORTANT: make this go to home + hash, not just "#contact"
+    { label: "Contact Us", href: "/#contact" }
   ];
 
-  $: path = $page.url.pathname;
+  // CRITICAL: reactive values so Svelte re-renders on client navigation
+  $: pathname = $page.url.pathname;
   $: hash = $page.url.hash;
 
   function isActive(href: string): boolean {
-    if (href.startsWith("#")) return hash === href;
-    return href === path;
+    if (href === "/") return pathname === "/";
+    if (href.startsWith("#")) return pathname === "/" && hash === href;
+
+    // exact match or nested route match
+    return pathname === href || pathname.startsWith(href + "/");
   }
 
   function closeMenu(): void {
@@ -49,7 +54,11 @@
 
       <nav class="navDesktop" aria-label="Primary navigation">
         {#each nav as item}
-          <a class="navItem" href={item.href}>
+          <a
+            class="navItem"
+            class:active={isActive(item.href)}
+            href={item.href}
+          >
             {item.label}
           </a>
         {/each}
@@ -73,7 +82,12 @@
 
       <nav class="menuPanel" aria-label="Mobile navigation">
         {#each nav as item}
-          <a class="menuItem {isActive(item.href) ? 'active' : ''}" href={item.href} on:click={closeMenu}>
+          <a
+            class="menuItem"
+            class:active={isActive(item.href)}
+            href={item.href}
+            on:click={closeMenu}
+          >
             {item.label}
           </a>
         {/each}
@@ -97,7 +111,7 @@
     --creamText: #f5efe9;
 
     --containerMax: 1440px;
-    --siteWidth: 1440px; /* keep for older page CSS that still uses --siteWidth */
+    --siteWidth: 1440px;
     --gutter: 34px;
     --headerH: 72px;
   }
@@ -139,13 +153,13 @@
     background: var(--bg);
   }
 
- .headerOuter {
-  background: var(--bg);
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  border-bottom: 6px solid var(--brown);
-}
+  .headerOuter {
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 6px solid var(--brown);
+  }
 
   .headerInner {
     height: var(--headerH);
@@ -186,11 +200,7 @@
     transition: background 120ms ease, color 120ms ease;
   }
 
-  .navItem:hover {
-  background: var(--navActive);
-  color: var(--white);
-}
-
+  .navItem:hover,
   .navItem.active {
     background: var(--navActive);
     color: var(--white);
@@ -230,14 +240,14 @@
 
   .menuPanel {
     position: fixed;
-    top: var(--headerH);
-    left: 0;
-    right: 0;
+    inset: 0;
     background: var(--brown);
-    padding: 16px var(--gutter);
+    padding: calc(var(--headerH) + 24px) var(--gutter) 24px;
     z-index: 70;
-    display: grid;
-    gap: 10px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .menuItem {
@@ -252,10 +262,6 @@
   }
 
   @media (max-width: 1024px) {
-    .headerOuter {
-      border-bottom: 6px solid var(--brown);
-    }
-
     .navDesktop {
       display: none;
     }
