@@ -1,57 +1,52 @@
-<svelte:head>
-  <meta name="description" content="Utah Skatepark Advocacy Group" />
-</svelte:head>
+<section class="hero">
+  <div class="heroInner">
+    <h1 class="heroTitle">
+      Expanding skatepark access with an end goal that every rider in Utah has a quality and safe place to ride.
+    </h1>
 
-<section class="relative w-full">
-  <!-- Background image -->
-  <div class="absolute inset-0">
-    <img
-      src="/images/home/hero-bg.jpg"
-      alt=""
-      class="h-full w-full object-cover"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <!-- subtle wash so text stays readable -->
-    <div class="absolute inset-0 bg-white/70"></div>
-  </div>
-
-  <!-- Content -->
-  <div class="relative mx-auto max-w-6xl px-4 md:px-8 lg:px-12">
-    <div class="min-h-[260px] py-10 md:min-h-[360px] md:py-16 lg:min-h-[420px] lg:py-20">
-      <div class="grid items-center gap-10 md:grid-cols-2 md:gap-12">
-        <!-- Left: logo + name -->
-        <div class="flex items-center justify-center md:justify-start">
-          <div class="flex items-center gap-5">
-            <img
-              src="/images/home/usag-mark.png"
-              alt="Utah Skatepark Advocacy Group logo"
-              class="h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24"
-            />
-            <div class="leading-tight">
-              <div class="text-base font-semibold tracking-wide text-black md:text-lg lg:text-xl">
-                UTAH
-              </div>
-              <div class="text-base font-semibold tracking-wide text-black md:text-lg lg:text-xl">
-                SKATEPARK
-              </div>
-              <div class="text-base font-semibold tracking-wide text-black md:text-lg lg:text-xl">
-                ADVOCACY
-              </div>
-              <div class="text-base font-semibold tracking-wide text-black md:text-lg lg:text-xl">
-                GROUP
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: statement -->
-        <div class="text-center md:text-left">
-          <p class="mx-auto max-w-xl text-base leading-relaxed text-black/80 md:mx-0 md:text-lg lg:text-xl">
-            Expanding skatepark access with an end goal that every rider in Utah has a quality and safe place to ride.
-          </p>
-        </div>
-      </div>
+    <div class="heroMark" aria-hidden="true">
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="38" cy="12" r="4" fill="#2b2b2b" />
+        <path d="M22 22c6-4 9-4 14-3" stroke="#2b2b2b" stroke-width="2.2" stroke-linecap="round" />
+        <path d="M18 30c5-3 10-4 16-3" stroke="#2b2b2b" stroke-width="2.2" stroke-linecap="round" />
+        <path d="M28 24l-4 14" stroke="#2b2b2b" stroke-width="2.2" stroke-linecap="round" />
+        <path d="M34 26l6 12" stroke="#2b2b2b" stroke-width="2.2" stroke-linecap="round" />
+        <path d="M18 44c8 4 18 4 26 0" stroke="#c63600" stroke-width="3" stroke-linecap="round" />
+        <circle cx="20" cy="45" r="3" fill="#2b2b2b" />
+        <circle cx="44" cy="45" r="3" fill="#2b2b2b" />
+      </svg>
     </div>
   </div>
 </section>
+
+<style>
+  .hero {
+    background: var(--bg);
+    padding: 46px 0 34px;
+  }
+
+  .heroInner {
+    width: min(var(--siteWidth), 100%);
+    margin: 0 auto;
+    padding: 0 34px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .heroTitle {
+    font-family: "Wendy One", system-ui, sans-serif;
+    font-size: 44px;
+    line-height: 1.18;
+    max-width: 900px;
+    margin: 18px 0 6px;
+    color: #2d2d2d;
+    letter-spacing: 0.2px;
+  }
+
+  .heroMark {
+    margin-top: 8px;
+    opacity: 0.95;
+  }
+</style>

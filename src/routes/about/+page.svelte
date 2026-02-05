@@ -47,6 +47,52 @@
     rel="stylesheet"
   />
 </svelte:head>
+<nav style="
+  background:#1a1a1a;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:50;
+">
+  <div style="
+    height:50px;
+    display:flex;
+    align-items:center;
+    padding:0 20px;
+  ">
+    <!-- Logo (far left, vertically centered) -->
+    <a href="https://www.utahskateparkadvocacygroup.com/"
+       target="_blank"
+       rel="noopener"
+       style="display:flex;align-items:center;margin-right:25px;">
+      <img
+        src="/icon-mini.png"
+        alt="Utah Skatepark Advocacy Group"
+        style="width:32px;height:32px;display:block;"
+      />
+    </a>
+
+    <!-- Navigation -->
+    <div style="display:flex;align-items:center;gap:20px;">
+      <a href="/" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Home</a>
+      <a href="/skateparks" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Skateparks</a>
+      <a href="/resources" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Resources</a>
+      <a href="/design-builders" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Design & Builders List</a>
+      <a href="/community" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Community</a>
+      <a href="/news" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">News & Media</a>
+      <a href="/about" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">About</a>
+    </div>
+
+    <!-- Social icons pushed to far right -->
+    <div style="
+      margin-left:auto;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    ">
+    </div>
+  </div>
+</nav>
 
 
 <!-- HERO -->
@@ -154,6 +200,25 @@
   </div>
 </section>
 
+<!-- FOOTER -->
+<footer style="background:#000;color:#fff;padding:40px 20px;text-align:center;">
+  <h4 style="font:400 22px Oswald,sans-serif;margin-bottom:20px;">
+    UTAH SKATEPARK ADVOCACY GROUP
+  </h4>
+
+  <div style="display:flex;justify-content:center;gap:12px;margin-bottom:20px;">
+    <a href="https://www.facebook.com/goskateutah" target="_blank">
+      <img src="/facebook-icon.png" width="20" height="20" alt="Facebook" />
+    </a>
+    <a href="https://www.instagram.com/goskateutah/" target="_blank">
+      <img src="/instagram-icon.png" width="20" height="20" alt="Instagram" />
+    </a>
+  </div>
+
+  <p style="font:400 12px Raleway,sans-serif;margin:0;">
+    2025 by The Utah Skatepark Advocacy Group.
+  </p>
+</footer>
 
 <style>
   * { box-sizing: border-box; }

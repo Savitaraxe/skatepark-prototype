@@ -338,54 +338,6 @@
   />
 </svelte:head>
 
-<!-- NAV -->
-<nav style="
-  background:#1a1a1a;
-  position:fixed;
-  width:100%;
-  top:0;
-  z-index:50;
-">
-  <div style="
-    height:50px;
-    display:flex;
-    align-items:center;
-    padding:0 20px;
-  ">
-    <!-- Logo (far left, vertically centered) -->
-    <a href="https://www.utahskateparkadvocacygroup.com/"
-       target="_blank"
-       rel="noopener"
-       style="display:flex;align-items:center;margin-right:25px;">
-      <img
-        src="/icon-mini.png"
-        alt="Utah Skatepark Advocacy Group"
-        style="width:32px;height:32px;display:block;"
-      />
-    </a>
-
-    <!-- Navigation -->
-    <div style="display:flex;align-items:center;gap:20px;">
-      <a href="/" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Home</a>
-      <a href="/skateparks" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Skateparks</a>
-      <a href="/resources" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Resources</a>
-      <a href="/design-builders" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Design & Builders List</a>
-      <a href="/community" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">Community</a>
-      <a href="/news" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">News & Media</a>
-      <a href="/about" style="color:#f7f7f7;font:400 14px Raleway,sans-serif;text-decoration:none;">About</a>
-    </div>
-
-    <!-- Social icons pushed to far right -->
-    <div style="
-      margin-left:auto;
-      display:flex;
-      align-items:center;
-      gap:16px;
-    ">
-    </div>
-  </div>
-</nav>
-
 <!-- HERO -->
 <section class="heroWrap">
   <img
@@ -521,7 +473,7 @@
   .heroWrap {
     position: relative;
     max-width: 980px;
-    margin: 40px auto 0;
+    margin: 0px auto 0;
     padding: 0 0;
   }
 
