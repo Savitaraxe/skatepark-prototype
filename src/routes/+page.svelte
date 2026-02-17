@@ -79,6 +79,7 @@
   .page {
     width: 100%;
   }
+  
 
   .brownBlock {
     background: var(--brown);
@@ -206,13 +207,17 @@
     justify-content: center;
     gap: 14px;
     align-items: center;
-  }
+    filter: brightness(0) invert(0);
+    color: black;
+}
+  
 
   .igIcons img {
     height: 20px;
     width: auto;
     display: block;
     filter: grayscale(1);
+    filter: brightness(0) invert(0);
   }
 
   .carousel {

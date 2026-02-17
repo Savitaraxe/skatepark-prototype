@@ -101,8 +101,8 @@
 <style>
   :global(:root) {
     --bg: #eedfda;
-    --brown: #8d3717;
-    --navActive: #c63600;
+    --brown: #FFC03A;
+    --navActive: #eca712;
     --blue: #0222d8;
 
     --text: #2b2b2b;
@@ -113,13 +113,16 @@
     --containerMax: 1440px;
     --siteWidth: 1440px;
     --gutter: 34px;
-    --headerH: 72px;
+    --headerH: 80px;
+    --headerPadX: 1px;
+    --logoInsetY: 4px; 
   }
 
   @media (max-width: 1024px) {
     :global(:root) {
       --gutter: 24px;
-      --headerH: 72px;
+      --headerH: 80px;
+      --headerPadX: 1px;
     }
   }
 
@@ -127,6 +130,7 @@
     :global(:root) {
       --gutter: 18px;
       --headerH: 64px;
+      --headerPadX: 1px;
     }
   }
 
@@ -165,23 +169,32 @@
     height: var(--headerH);
     max-width: var(--containerMax);
     margin: 0 auto;
-    padding: 0 var(--gutter);
+    padding: 0 var(--gutter) 0 0;
+    padding-left: var(--headerPadLeft);
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 12px;
   }
 
   .brand {
     display: flex;
     align-items: center;
+    height: 100%;
+    padding: 0;
     min-width: 0;
-  }
+    margin: 0;
+    line-height: 0;
+}
 
   .logo {
-    height: 44px;
+    width: auto;
+    height: calc(var(--headerH) - (var(--logoInsetY) * 2));
     width: auto;
     display: block;
-  }
+    height: 100%;
+    margin: 0;
+    margin-left: -10px;
+}
 
   .navDesktop {
     display: flex;
@@ -239,31 +252,62 @@
   }
 
   .menuPanel {
-    position: fixed;
-    inset: 0;
-    background: var(--brown);
-    padding: calc(var(--headerH) + 24px) var(--gutter) 24px;
-    z-index: 70;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+  position: fixed;
+  inset: 0;
+  background: var(--brown);
 
-  .menuItem {
-    color: var(--white);
-    font-weight: 700;
-    padding: 10px 8px;
-    border-radius: 4px;
-  }
+  /* start under the header, not centered */
+  padding: calc(var(--headerH) + 12px) 0 24px;
+  z-index: 70;
 
-  .menuItem.active {
-    background: rgba(255, 255, 255, 0.12);
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  gap: 0;
+  overflow-y: auto;
+}
+
+/* full-width, big tap targets, big text */
+.menuItem {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 72px;
+
+  padding: 18px var(--gutter);
+
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+
+  color: var(--white);
+
+  /* white divider line between buttons */
+  border-bottom: 2px solid rgba(255, 255, 255, 0.75);
+}
+
+/* top border so the first item is boxed in too */
+.menuPanel .menuItem:first-child {
+  border-top: 2px solid rgba(255, 255, 255, 0.75);
+}
+
+/* clearer hover/active states */
+.menuItem:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.menuItem.active {
+  background: rgba(255, 255, 255, 0.22);
+}
 
   @media (max-width: 1024px) {
+    
     .navDesktop {
       display: none;
+      
     }
 
     .burger {
@@ -273,12 +317,12 @@
 
   @media (max-width: 640px) {
     .logo {
-      height: 36px;
+    margin-left: -5px;
     }
-
     .burger {
       width: 96px;
     }
+    
 
     .line {
       width: 40px;
