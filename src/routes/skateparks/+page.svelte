@@ -1,11 +1,9 @@
 <!-- src/routes/skateparks/+page.svelte -->
 
 <script lang="ts">
-  
-  // Lazy-load photo URLs per-card (no user uploads, no local /src images needed)
-  // Photos are fetched from your server endpoint: /api/skatepark-photo
-type Skatepark = {
-  
+  import { base } from "$app/paths";
+
+  type Skatepark = {
     name: string;
     city: string;
     status: string;
@@ -19,6 +17,7 @@ type Skatepark = {
     type: string;
     access: string;
   };
+
   const skateparks: Skatepark[] = [
     {
       name: "Bluffdale Skatepark",
@@ -344,78 +343,146 @@ type Skatepark = {
     }
   ];
 
-  // photoState values:
-  // - undefined: not requested yet
-  // - null: loading
-  // - "": no photo found / failed
-  // - "https://...": photo URL
-  type skatepark = {
-  name: string;
-  city: string;
-};
-import { base } from "$app/paths";
+  // ── Filter / Sort state ──────────────────────────────────────────
+  let filterOpen = false;
+  let sortBy = "name-asc";
+  let filterStatuses = new Set<string>();
+  let filterSurfaces = new Set<string>();
+  let filterLights = new Set<string>();
+  let filterSizes = new Set<string>(); // "small" | "medium" | "large"
 
-type PhotoState = Record<string, string | null>;
+  // Static option lists derived from data (computed once)
+  const statusOptions = [...new Set(skateparks.map((p) => p.status))].sort();
+  const surfaceOptions = [...new Set(skateparks.map((p) => p.surface))].sort();
 
-let photoState: PhotoState = {};
+  const sortOptions = [
+    { value: "name-asc",  label: "Name A–Z" },
+    { value: "name-desc", label: "Name Z–A" },
+    { value: "city-asc",  label: "City A–Z" },
+    { value: "city-desc", label: "City Z–A" },
+    { value: "size-desc", label: "Largest First" },
+    { value: "size-asc",  label: "Smallest First" },
+    { value: "year-new",  label: "Year: Newest" },
+    { value: "year-old",  label: "Year: Oldest" }
+  ];
 
-function keyFor(p: Skatepark): string {
-  return `${p.name}|||${p.city}`;
-}
+  const sizeOptions = [
+    { value: "small",  label: "Small  (< 5,000 sq ft)" },
+    { value: "medium", label: "Medium  (5,000 – 15,000 sq ft)" },
+    { value: "large",  label: "Large  (> 15,000 sq ft)" }
+  ];
 
-function getPhotoUrl(p: Skatepark): string {
-  const v = photoState[keyFor(p)];
-  return typeof v === "string" ? v : "";
-}
-
-function isLoading(p: Skatepark): boolean {
-  return photoState[keyFor(p)] === null;
-}
-
-async function loadPhoto(p: Skatepark): Promise<void> {
-  console.log("Fetching photo for", p.name, p.city);
-  const k = keyFor(p);
-  if (photoState[k] !== undefined) return;
-
-  photoState = { ...photoState, [k]: null };
-
-  try {
-    const qs = new URLSearchParams({ name: p.name, city: p.city, address: p.address }).toString();
-    const res = await fetch(`${base}/api/skatepark-photo?${qs}`);
-    if (!res.ok) throw new Error();
-    const data: { url: string | null } = await res.json();
-
-    photoState = { ...photoState, [k]: data.url ?? "" };
-  } catch {
-    photoState = { ...photoState, [k]: "" };
+  function sizeCategory(sqft: string): string {
+    const n = parseInt(sqft, 10);
+    if (!n) return "small";
+    if (n < 5000) return "small";
+    if (n <= 15000) return "medium";
+    return "large";
   }
-}
 
-  // Svelte action: lazy-load when the photo area scrolls near viewport
- function lazyPhoto(node: HTMLElement, p: Skatepark) {
-  let done = false;
-
-  const obs = new IntersectionObserver(
-    (entries) => {
-      if (done) return;
-
-      if (entries[0]?.isIntersecting) {
-        done = true;
-        loadPhoto(p);   // NOW p exists
-        obs.disconnect();
+  // Reactive filtered + sorted list
+  $: filteredParks = skateparks
+    .filter((p) => {
+      if (filterStatuses.size > 0 && !filterStatuses.has(p.status)) return false;
+      if (filterSurfaces.size > 0 && !filterSurfaces.has(p.surface)) return false;
+      if (filterLights.size > 0 && !filterLights.has(p.lights)) return false;
+      if (filterSizes.size > 0 && !filterSizes.has(sizeCategory(p.sizeSqFt))) return false;
+      return true;
+    })
+    .sort((a, b) => {
+      switch (sortBy) {
+        case "name-asc":  return a.name.localeCompare(b.name);
+        case "name-desc": return b.name.localeCompare(a.name);
+        case "city-asc":  return a.city.localeCompare(b.city);
+        case "city-desc": return b.city.localeCompare(a.city);
+        case "size-desc": return (parseInt(b.sizeSqFt) || 0) - (parseInt(a.sizeSqFt) || 0);
+        case "size-asc":  return (parseInt(a.sizeSqFt) || 0) - (parseInt(b.sizeSqFt) || 0);
+        case "year-new":  return (parseInt(b.yearBuilt) || 0) - (parseInt(a.yearBuilt) || 0);
+        case "year-old": {
+          const ay = parseInt(a.yearBuilt) || 9999;
+          const by = parseInt(b.yearBuilt) || 9999;
+          return ay - by;
+        }
+        default: return 0;
       }
-    },
-    { rootMargin: "400px" }
-  );
+    });
 
-  obs.observe(node);
+  $: activeFilterCount =
+    filterStatuses.size + filterSurfaces.size + filterLights.size + filterSizes.size;
+  $: hasActiveFilters = activeFilterCount > 0 || sortBy !== "name-asc";
 
-  return {
-    destroy() {
-      obs.disconnect();
+  function toggleChip(set: Set<string>, value: string): Set<string> {
+    const next = new Set(set);
+    if (next.has(value)) next.delete(value);
+    else next.add(value);
+    return next;
+  }
+
+  function clearAll(): void {
+    filterStatuses = new Set();
+    filterSurfaces = new Set();
+    filterLights = new Set();
+    filterSizes = new Set();
+    sortBy = "name-asc";
+  }
+
+  // Close panel when clicking outside the filter container
+  function handleWindowClick(e: MouseEvent): void {
+    if (!filterOpen) return;
+    const target = e.target as HTMLElement;
+    if (!target.closest?.(".filterContainer")) {
+      filterOpen = false;
     }
-  };
-}
+  }
+
+  // ── Photo lazy-load state ────────────────────────────────────────
+  type PhotoState = Record<string, string | null>;
+  let photoState: PhotoState = {};
+
+  function keyFor(p: Skatepark): string {
+    return `${p.name}|||${p.city}`;
+  }
+
+  function getPhotoUrl(p: Skatepark): string {
+    const v = photoState[keyFor(p)];
+    return typeof v === "string" ? v : "";
+  }
+
+  function isLoading(p: Skatepark): boolean {
+    return photoState[keyFor(p)] === null;
+  }
+
+  async function loadPhoto(p: Skatepark): Promise<void> {
+    const k = keyFor(p);
+    if (photoState[k] !== undefined) return;
+    photoState = { ...photoState, [k]: null };
+    try {
+      const qs = new URLSearchParams({ name: p.name, city: p.city, address: p.address }).toString();
+      const res = await fetch(`${base}/api/skatepark-photo?${qs}`);
+      if (!res.ok) throw new Error();
+      const data: { url: string | null } = await res.json();
+      photoState = { ...photoState, [k]: data.url ?? "" };
+    } catch {
+      photoState = { ...photoState, [k]: "" };
+    }
+  }
+
+  function lazyPhoto(node: HTMLElement, p: Skatepark) {
+    let done = false;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        if (done) return;
+        if (entries[0]?.isIntersecting) {
+          done = true;
+          loadPhoto(p);
+          obs.disconnect();
+        }
+      },
+      { rootMargin: "400px" }
+    );
+    obs.observe(node);
+    return { destroy() { obs.disconnect(); } };
+  }
 </script>
 
 <svelte:head>
@@ -427,6 +494,8 @@ async function loadPhoto(p: Skatepark): Promise<void> {
     rel="stylesheet"
   />
 </svelte:head>
+
+<svelte:window on:click={handleWindowClick} />
 
 <!-- HERO -->
 <section class="heroWrap">
@@ -444,107 +513,220 @@ async function loadPhoto(p: Skatepark): Promise<void> {
         Let us know so we can keep the community informed!
       </div>
     </div>
-
-    <button type="button" class="infoBtn">
-  Request Info Update
-</button>
+    <button type="button" class="infoBtn">Request Info Update</button>
   </div>
 
-  <div class="filterBar">
-    <div class="filterLeft">&#128305; Filters</div>
+  <!-- Filter bar + dropdown panel -->
+  <div class="filterContainer">
+    <div class="filterBar">
+      <button
+        type="button"
+        class="filterToggleBtn"
+        class:filterToggleActive={hasActiveFilters}
+        on:click|stopPropagation={() => (filterOpen = !filterOpen)}
+        aria-expanded={filterOpen}
+      >
+        <svg class="filterIcon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        Filters
+        {#if activeFilterCount > 0}
+          <span class="filterBadge">{activeFilterCount}</span>
+        {/if}
+        <svg class="chevron" class:chevronOpen={filterOpen} width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
 
-    <div class="filterRight">
-      Skateparks displayed: <strong>84</strong>
-      <span class="filterIcon">&#9660;</span>
+      <div class="filterRight">
+        Skateparks displayed: <strong>{filteredParks.length}</strong>
+      </div>
     </div>
+
+    {#if filterOpen}
+      <div class="filterPanel" role="dialog" aria-label="Filter and sort options">
+
+        <!-- Sort By -->
+        <div class="panelSection">
+          <div class="sectionLabel">Sort By</div>
+          <div class="chipRow">
+            {#each sortOptions as opt}
+              <button
+                type="button"
+                class="chip"
+                class:chipActive={sortBy === opt.value}
+                on:click={() => (sortBy = opt.value)}
+              >{opt.label}</button>
+            {/each}
+          </div>
+        </div>
+
+        <div class="panelDivider"></div>
+
+        <!-- Filter rows -->
+        <div class="panelGrid">
+          <div class="panelSection">
+            <div class="sectionLabel">Status</div>
+            <div class="chipRow">
+              {#each statusOptions as s}
+                <button
+                  type="button"
+                  class="chip"
+                  class:chipActive={filterStatuses.has(s)}
+                  on:click={() => (filterStatuses = toggleChip(filterStatuses, s))}
+                >{s}</button>
+              {/each}
+            </div>
+          </div>
+
+          <div class="panelSection">
+            <div class="sectionLabel">Surface</div>
+            <div class="chipRow">
+              {#each surfaceOptions as s}
+                <button
+                  type="button"
+                  class="chip"
+                  class:chipActive={filterSurfaces.has(s)}
+                  on:click={() => (filterSurfaces = toggleChip(filterSurfaces, s))}
+                >{s}</button>
+              {/each}
+            </div>
+          </div>
+
+          <div class="panelSection">
+            <div class="sectionLabel">Lights</div>
+            <div class="chipRow">
+              {#each ["Yes", "No"] as l}
+                <button
+                  type="button"
+                  class="chip"
+                  class:chipActive={filterLights.has(l)}
+                  on:click={() => (filterLights = toggleChip(filterLights, l))}
+                >{l === "Yes" ? "Has Lights" : "No Lights"}</button>
+              {/each}
+            </div>
+          </div>
+
+          <div class="panelSection panelSectionFull">
+            <div class="sectionLabel">Park Size</div>
+            <div class="chipRow">
+              {#each sizeOptions as s}
+                <button
+                  type="button"
+                  class="chip"
+                  class:chipActive={filterSizes.has(s.value)}
+                  on:click={() => (filterSizes = toggleChip(filterSizes, s.value))}
+                >{s.label}</button>
+              {/each}
+            </div>
+          </div>
+        </div>
+
+        {#if hasActiveFilters}
+          <div class="panelDivider"></div>
+          <div class="panelFooter">
+            <button type="button" class="clearAllBtn" on:click={clearAll}>
+              &#x2715; Clear All Filters
+            </button>
+          </div>
+        {/if}
+
+      </div>
+    {/if}
   </div>
 </section>
 
 <!-- GRID -->
 <section class="pageWrap">
-  <div class="cardsGrid">
-    {#each skateparks as p}
-      <div class="card">
-        <!-- photo area -->
-        <div class="photoArea" use:lazyPhoto={p}>
-          {#if getPhotoUrl(p)}
-            <img class="photoImg" src={getPhotoUrl(p)} alt={"Photo of " + p.name} loading="lazy" />
-          {:else}
-            <!-- keep your original dark block; show a subtle loading bar if fetching -->
-            {#if isLoading(p)}
-              <div class="photoLoading"></div>
+  {#if filteredParks.length === 0}
+    <div class="noResults">
+      <p>No skateparks match your current filters.</p>
+      <button type="button" class="clearAllBtn" on:click={clearAll}>Clear All Filters</button>
+    </div>
+  {:else}
+    <div class="cardsGrid">
+      {#each filteredParks as p}
+        <div class="card">
+          <!-- photo area -->
+          <div class="photoArea" use:lazyPhoto={p}>
+            {#if getPhotoUrl(p)}
+              <img class="photoImg" src={getPhotoUrl(p)} alt={"Photo of " + p.name} loading="lazy" />
+            {:else}
+              {#if isLoading(p)}
+                <div class="photoLoading"></div>
+              {/if}
             {/if}
-          {/if}
 
-          <div class="photoBtns">
-            <button type="button" class="pillBtn">+ Add Photo</button>
-            <button type="button" class="pillsubmitBtn">Submit</button>
+            <div class="photoBtns">
+              <button type="button" class="pillBtn">+ Add Photo</button>
+              <button type="button" class="pillsubmitBtn">Submit</button>
+            </div>
+          </div>
+
+          <!-- detail box -->
+          <div class="detailBox">
+            <div class="titleBlock">
+              <div class="parkName">{p.name}</div>
+              <div class="parkCity">{p.city}</div>
+            </div>
+
+            <div class="twoCol">
+              <div>
+                <div class="label">Status:</div>
+                <div class="value">{p.status}</div>
+              </div>
+              <div>
+                <div class="label">Size (Sq. Ft):</div>
+                <div class="value">{p.sizeSqFt}</div>
+              </div>
+            </div>
+
+            <div class="oneCol">
+              <div class="label">Address:</div>
+              <div class="value">{p.address}</div>
+            </div>
+
+            <div class="oneCol">
+              <div class="label">Designed by:</div>
+              <div class="value">{p.designedBy}</div>
+            </div>
+
+            <div class="oneCol">
+              <div class="label">Built by:</div>
+              <div class="value">{p.builtBy}</div>
+            </div>
+
+            <div class="oneCol">
+              <div class="label">Year Built:</div>
+              <div class="value">{p.yearBuilt}</div>
+            </div>
+
+            <div class="twoCol">
+              <div>
+                <div class="label">Surface:</div>
+                <div class="value">{p.surface}</div>
+              </div>
+              <div>
+                <div class="label">Lights?</div>
+                <div class="value">{p.lights}</div>
+              </div>
+            </div>
+
+            <div class="twoCol">
+              <div>
+                <div class="label">Type:</div>
+                <div class="value">{p.type}</div>
+              </div>
+              <div>
+                <div class="label">Access:</div>
+                <div class="value">{p.access}</div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <!-- detail box -->
-        <div class="detailBox">
-          <div class="titleBlock">
-            <div class="parkName">{p.name}</div>
-            <div class="parkCity">{p.city}</div>
-          </div>
-
-          <div class="twoCol">
-            <div>
-              <div class="label">Status:</div>
-              <div class="value">{p.status}</div>
-            </div>
-            <div>
-              <div class="label">Size (Sq. Ft):</div>
-              <div class="value">{p.sizeSqFt}</div>
-            </div>
-          </div>
-
-          <div class="oneCol">
-            <div class="label">Address:</div>
-            <div class="value">{p.address}</div>
-          </div>
-
-          <div class="oneCol">
-            <div class="label">Designed by:</div>
-            <div class="value">{p.designedBy}</div>
-          </div>
-
-          <div class="oneCol">
-            <div class="label">Built by:</div>
-            <div class="value">{p.builtBy}</div>
-          </div>
-
-          <div class="oneCol">
-            <div class="label">Year Built:</div>
-            <div class="value">{p.yearBuilt}</div>
-          </div>
-
-          <div class="twoCol">
-            <div>
-              <div class="label">Surface:</div>
-              <div class="value">{p.surface}</div>
-            </div>
-            <div>
-              <div class="label">Lights?</div>
-              <div class="value">{p.lights}</div>
-            </div>
-          </div>
-
-          <div class="twoCol">
-            <div>
-              <div class="label">Type:</div>
-              <div class="value">{p.type}</div>
-            </div>
-            <div>
-              <div class="label">Access:</div>
-              <div class="value">{p.access}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    {/each}
-  </div>
+      {/each}
+    </div>
+  {/if}
 </section>
 
 <style>
@@ -552,11 +734,12 @@ async function loadPhoto(p: Skatepark): Promise<void> {
     box-sizing: border-box;
   }
 
+  /* ── Hero ─────────────────────────────────────────────────────── */
   .heroWrap {
     position: relative;
     max-width: 980px;
-    margin: 0px auto 0;
-    padding: 0 0;
+    margin: 0 auto;
+    padding: 0;
   }
 
   .heroImg {
@@ -577,10 +760,236 @@ async function loadPhoto(p: Skatepark): Promise<void> {
     padding: 12px 24px;
   }
 
+  /* ── Info bar ─────────────────────────────────────────────────── */
+  .infoWrap {
+    max-width: 980px;
+    margin: 16px auto 16px;
+    padding: 0 20px;
+  }
+
+  .infoTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+
+  .infoTitle {
+    font: 400 22px Oswald, sans-serif;
+    margin-bottom: 6px;
+  }
+
+  .infoDesc {
+    font: 400 14px/1.5 Raleway, sans-serif;
+    color: #000;
+  }
+
+  .infoBtn {
+    background: #000;
+    color: #fff;
+    font: 400 14px Raleway, sans-serif;
+    padding: 10px 14px;
+    border: 0;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .infoBtn:hover {
+    opacity: 0.9;
+  }
+
+  /* ── Filter container ─────────────────────────────────────────── */
+  .filterContainer {
+    position: relative;
+  }
+
+  .filterBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+    padding: 0 20px;
+    background: #fff;
+    border: 2px solid #d9d9d9;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  .filterToggleBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 0;
+    font: 700 16px Raleway, sans-serif;
+    color: #1a1a1a;
+    cursor: pointer;
+    padding: 6px 0;
+  }
+
+  .filterToggleBtn:hover {
+    color: #000;
+  }
+
+  .filterToggleActive {
+    color: #000;
+  }
+
+  .filterIcon {
+    flex-shrink: 0;
+  }
+
+  .filterBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffc03a;
+    color: #1a1a1a;
+    font: 700 11px Raleway, sans-serif;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 99px;
+    padding: 0 5px;
+  }
+
+  .chevron {
+    transition: transform 180ms ease;
+  }
+
+  .chevronOpen {
+    transform: rotate(180deg);
+  }
+
+  .filterRight {
+    font: 400 16px Raleway, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ── Filter panel dropdown ────────────────────────────────────── */
+  .filterPanel {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 2px solid #d9d9d9;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    z-index: 50;
+    padding: 20px 24px;
+  }
+
+  .panelSection {
+    /* spacing handled by grid gap */
+  }
+
+  .panelSectionFull {
+    grid-column: 1 / -1;
+  }
+
+  .sectionLabel {
+    font: 700 11px Raleway, sans-serif;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin-bottom: 10px;
+  }
+
+  .chipRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 99px;
+    border: 1.5px solid #d0d0d0;
+    background: #fff;
+    font: 400 13px Raleway, sans-serif;
+    color: #333;
+    cursor: pointer;
+    transition: background 80ms, border-color 80ms, color 80ms;
+    white-space: nowrap;
+  }
+
+  .chip:hover {
+    border-color: #999;
+    background: #f5f5f5;
+  }
+
+  .chipActive {
+    background: #ffc03a;
+    border-color: #e8a800;
+    color: #1a1a1a;
+    font-weight: 700;
+  }
+
+  .chipActive:hover {
+    background: #f0b400;
+    border-color: #d9a000;
+  }
+
+  .panelDivider {
+    height: 1px;
+    background: #ebebeb;
+    margin: 18px 0;
+  }
+
+  .panelGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px 32px;
+  }
+
+  .panelFooter {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .clearAllBtn {
+    background: transparent;
+    border: 1.5px solid #d0d0d0;
+    font: 600 13px Raleway, sans-serif;
+    color: #666;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 80ms, color 80ms;
+  }
+
+  .clearAllBtn:hover {
+    border-color: #999;
+    color: #222;
+  }
+
+  /* ── No results ───────────────────────────────────────────────── */
+  .noResults {
+    max-width: 960px;
+    margin: 48px auto;
+    padding: 0 20px;
+    text-align: center;
+    font: 400 16px Raleway, sans-serif;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .noResults p {
+    margin: 0;
+  }
+
+  /* ── Cards grid ───────────────────────────────────────────────── */
   .pageWrap {
     max-width: 960px;
     margin: 0 auto;
-    padding: 0px 0px 0px;
+    padding: 0;
   }
 
   .cardsGrid {
@@ -596,17 +1005,15 @@ async function loadPhoto(p: Skatepark): Promise<void> {
     flex-direction: column;
   }
 
-  /* Top "photo" block: 260x236 */
   .photoArea {
     width: 260px;
     height: 236px;
-    margin: 0px;
+    margin: 0;
     background: #2f2e2e;
     position: relative;
-    overflow: hidden; /* needed for img crop */
+    overflow: hidden;
   }
 
-  /* Actual photo */
   .photoImg {
     position: absolute;
     inset: 0;
@@ -616,7 +1023,6 @@ async function loadPhoto(p: Skatepark): Promise<void> {
     display: block;
   }
 
-  /* Simple loading indicator */
   .photoLoading {
     position: absolute;
     left: 0;
@@ -646,8 +1052,6 @@ async function loadPhoto(p: Skatepark): Promise<void> {
     border-radius: 24px;
     border: 2px solid #000;
     cursor: pointer;
-    text-transform: none;
-    text-decoration: none;
   }
 
   .pillBtn:hover {
@@ -716,73 +1120,15 @@ async function loadPhoto(p: Skatepark): Promise<void> {
     display: block;
   }
 
-  .infoWrap {
-    max-width: 980px;
-    margin: 16px auto 16px;
-    padding: 0 20px;
-  }
-
-  .infoTop {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-    margin-bottom: 20px;
-  }
-
-  .infoTitle {
-    font: 400 22px Oswald, sans-serif;
-    margin-bottom: 6px;
-  }
-
-  .infoDesc {
-    font: 400 14px/1.5 Raleway, sans-serif;
-    color: #000;
-  }
-
-  .infoBtn {
-    background: #000;
-    color: #fff;
-    font: 400 14px Raleway, sans-serif;
-    padding: 10px 14px;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  .infoBtn:hover {
-    opacity: 0.9;
-  }
-
-  .filterBar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 72px;
-    padding: 0 20px;
-    background: #fff;
-    border: 2px solid #d9d9d9;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
-  }
-
-  .filterLeft {
-    font: 700 16px Raleway, sans-serif;
-  }
-
-  .filterRight {
-    font: 400 16px Raleway, sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .filterIcon {
-    font-size: 12px;
-  }
-
+  /* ── Responsive ───────────────────────────────────────────────── */
   @media (max-width: 980px) {
     .cardsGrid {
       grid-template-columns: repeat(2, 291px);
       justify-content: center;
+    }
+
+    .panelGrid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
@@ -790,6 +1136,14 @@ async function loadPhoto(p: Skatepark): Promise<void> {
     .cardsGrid {
       grid-template-columns: 291px;
       justify-content: center;
+    }
+
+    .panelGrid {
+      grid-template-columns: 1fr;
+    }
+
+    .panelSectionFull {
+      grid-column: 1;
     }
   }
 </style>

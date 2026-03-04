@@ -91,7 +91,7 @@
     margin: 0 auto;
     padding: 0 34px;
     text-align: center;
-    color: var(--creamText);
+    color: #1a1a1a;
   }
 
   .blockTitle {
@@ -169,11 +169,11 @@
     width: 7px;
     height: 7px;
     border-radius: 999px;
-    background: rgba(245, 239, 233, 0.45);
+    background: rgba(26, 26, 26, 0.3);
   }
 
   .dot.active {
-    background: rgba(245, 239, 233, 0.95);
+    background: rgba(26, 26, 26, 0.85);
   }
 
   .igBlock {

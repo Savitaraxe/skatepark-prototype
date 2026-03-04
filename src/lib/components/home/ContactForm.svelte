@@ -55,7 +55,7 @@
   .contactBlock {
     background: var(--brown);
     padding: 62px 0 72px;
-    color: var(--creamText);
+    color: #1a1a1a;
   }
 
   .contactInner {
@@ -90,8 +90,8 @@
     height: 20px;
     width: auto;
     display: block;
-    filter: grayscale(1) invert(1);
-    opacity: 0.9;
+    filter: grayscale(1);
+    opacity: 0.8;
   }
 
   .form {
@@ -109,7 +109,7 @@
   .label {
     font-weight: 700;
     font-size: 13px;
-    color: var(--creamText);
+    color: #1a1a1a;
   }
 
   input,
