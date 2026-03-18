@@ -28,22 +28,22 @@
     {
       name: "Sean Peterson",
       role: "President and Founder",
-      photo: "/23fd2a2be53141ed810f4d3dcdcd01fa_1.png"
+      photo: "/SeanPeterson.png"
     },
     {
       name: "Jared Strain",
       role: "USAG Board Member",
-      photo: "/6e2c1f_00276ba31fe74730ae131e247f9433d0~mv2_1.png"
+      photo: "/JaredStrain.png"
     },
     {
       name: "Geoff Geertsen",
       role: "USAG Board Member",
-      photo: "/81af6121f84c41a5b4391d7d37fce12a_1.png"
+      photo: "/GeoffGeertsen.png"
     },
     {
       name: "Jack Parker",
       role: "Board Member and Secretary",
-      photo: null
+      photo: "/JackParker.png"
     }
   ];
 </script>
@@ -66,8 +66,8 @@
     />
   </section>
 
-  <!-- Mission -->
-  <section class="missionSection">
+  <!-- Mission banner -->
+  <section class="missionBanner">
     <div class="inner">
       <h1 class="missionTitle">Our Mission</h1>
       <p class="missionText">
@@ -127,8 +127,6 @@
   /* ── Hero ──────────────────────────────────────────────────────── */
   .hero {
     width: 100%;
-    max-height: 420px;
-    overflow: hidden;
   }
 
   .heroImg {
@@ -145,27 +143,27 @@
     padding: 0 var(--gutter);
   }
 
-  /* ── Mission ───────────────────────────────────────────────────── */
-  .missionSection {
-    background: var(--bg);
-    padding: 52px 0 48px;
-    text-align: center;
+  /* ── Mission banner (yellow, matches other pages) ──────────────── */
+  .missionBanner {
+    background: var(--brown);
+    padding: 24px 0;
   }
 
   .missionTitle {
     font-family: "Kanit", system-ui, sans-serif;
-    font-size: clamp(36px, 5vw, 56px);
-    margin: 0 0 16px;
-    color: var(--text);
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: #1a1a1a;
   }
 
   .missionText {
-    max-width: 620px;
-    margin: 0 auto;
     font-size: 15px;
     line-height: 1.65;
-    color: var(--text);
-    font-weight: 600;
+    color: #1a1a1a;
+    font-weight: 500;
+    max-width: 680px;
+    margin: 0;
   }
 
   /* ── Values ────────────────────────────────────────────────────── */
@@ -229,8 +227,8 @@
   }
 
   .boardPhoto {
-    width: 200px;
-    height: 200px;
+    width: 340px;
+    height: 340px;
     border-radius: 4px;
     overflow: hidden;
     background: #d0ccc8;
@@ -266,10 +264,10 @@
   }
 
   /* ── Responsive ────────────────────────────────────────────────── */
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .boardPhoto {
-      width: 240px;
-      height: 240px;
+      width: 280px;
+      height: 280px;
     }
   }
 
@@ -286,6 +284,11 @@
     .boardGrid {
       grid-template-columns: 1fr;
       gap: 36px;
+    }
+
+    .boardPhoto {
+      width: 85vw;
+      height: 85vw;
     }
   }
 </style>

@@ -2,6 +2,7 @@
 
 <script lang="ts">
   import { base } from "$app/paths";
+  import Footer from "$lib/components/home/Footer.svelte";
 
   type Skatepark = {
     name: string;
@@ -753,6 +754,8 @@
     </div>
   {/if}
 </section>
+
+<Footer />
 
 <style>
   * {

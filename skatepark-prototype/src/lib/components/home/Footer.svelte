@@ -42,6 +42,7 @@
     height: 28px;
     width: 28px;
     object-fit: contain;
+    filter: brightness(0);
   }
 
   .footerCopy {

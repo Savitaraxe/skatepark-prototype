@@ -192,7 +192,6 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    border-bottom: 6px solid var(--brown);
   }
 
   .headerInner {
@@ -228,16 +227,18 @@
 
   .navDesktop {
     display: flex;
-    align-items: center;
-    gap: 18px;
-    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0;
     margin-left: auto;
+    height: 100%;
   }
 
   .navItem {
-    padding: 12px 14px;
-    border-radius: 3px;
-    color: var(--muted);
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    border-radius: 0;
+    color: #111;
     font-family: "Raleway", system-ui, sans-serif;
     font-weight: 700;
     font-size: 18px;
@@ -247,8 +248,8 @@
 
   .navItem:hover,
   .navItem.active {
-    background: var(--navActive);
-    color: var(--white);
+    background: #111;
+    color: #fff;
   }
 
   .burger {
@@ -256,7 +257,7 @@
     margin-left: auto;
     height: calc(var(--headerH) - 12px);
     width: 120px;
-    background: var(--brown);
+    background: #111;
     border: 0;
     border-radius: 2px;
     padding: 0;
@@ -265,12 +266,17 @@
     justify-content: center;
     gap: 7px;
     flex-direction: column;
+    transition: background 120ms ease;
+  }
+
+  .burger:hover {
+    background: #333;
   }
 
   .line {
     width: 46px;
     height: 4px;
-    background: var(--white);
+    background: #fff;
     border-radius: 999px;
     display: block;
   }
@@ -286,53 +292,43 @@
   .menuPanel {
   position: fixed;
   inset: 0;
-  background: var(--brown);
-
-  /* start under the header, not centered */
+  background: #111;
   padding: calc(var(--headerH) + 12px) 0 24px;
   z-index: 70;
-
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-
   gap: 0;
   overflow-y: auto;
 }
 
-/* full-width, big tap targets, big text */
 .menuItem {
   display: flex;
   align-items: center;
-
   width: 100%;
   min-height: 72px;
-
   padding: 18px var(--gutter);
-
   font-size: 24px;
   font-weight: 800;
   line-height: 1.1;
-
-  color: var(--white);
-
-  /* white divider line between buttons */
-  border-bottom: 2px solid rgba(255, 255, 255, 0.75);
+  color: #fff;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+  transition: background 120ms ease, color 120ms ease;
 }
 
-/* top border so the first item is boxed in too */
 .menuPanel .menuItem:first-child {
-  border-top: 2px solid rgba(255, 255, 255, 0.75);
+  border-top: 2px solid rgba(255, 255, 255, 0.15);
 }
 
-/* clearer hover/active states */
 .menuItem:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: #fff;
+  color: #111;
 }
 
 .menuItem.active {
-  background: rgba(255, 255, 255, 0.22);
+  background: #fff;
+  color: #111;
 }
 
   @media (max-width: 1024px) {
