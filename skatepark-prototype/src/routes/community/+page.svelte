@@ -75,7 +75,7 @@
   }
 
   .heroTitle {
-    font-family: "Wendy One", system-ui, sans-serif;
+    font-family: "Kanit", system-ui, sans-serif;
     font-size: clamp(28px, 4vw, 44px);
     margin: 0;
     color: #1a1a1a;
@@ -101,7 +101,7 @@
   }
 
   .sectionTitle {
-    font-family: "Wendy One", system-ui, sans-serif;
+    font-family: "Kanit", system-ui, sans-serif;
     font-size: clamp(24px, 3.5vw, 36px);
     margin: 0 0 18px;
     color: var(--text);

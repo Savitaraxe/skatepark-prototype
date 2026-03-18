@@ -153,7 +153,7 @@
   }
 
   .missionTitle {
-    font-family: "Wendy One", system-ui, sans-serif;
+    font-family: "Kanit", system-ui, sans-serif;
     font-size: clamp(36px, 5vw, 56px);
     margin: 0 0 16px;
     color: var(--text);
@@ -175,7 +175,7 @@
   }
 
   .sectionHeading {
-    font-family: "Wendy One", system-ui, sans-serif;
+    font-family: "Kanit", system-ui, sans-serif;
     font-size: clamp(28px, 4vw, 42px);
     margin: 0 0 32px;
     color: var(--text);
@@ -194,7 +194,7 @@
   }
 
   .valueTitle {
-    font-family: "Wendy One", system-ui, sans-serif;
+    font-family: "Kanit", system-ui, sans-serif;
     font-size: 22px;
     margin: 0;
     color: var(--text);
@@ -249,13 +249,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Wendy One", system-ui, sans-serif;
+    font-family: "Kanit", system-ui, sans-serif;
     font-size: 48px;
     color: rgba(0, 0, 0, 0.3);
   }
 
   .boardName {
-    font-family: "Wendy One", system-ui, sans-serif;
+    font-family: "Kanit", system-ui, sans-serif;
     font-size: 18px;
     color: var(--text);
   }

@@ -66,7 +66,7 @@
   }
 
   .blockTitle {
-    font-family: "Wendy One", system-ui, sans-serif;
+    font-family: "Kanit", system-ui, sans-serif;
     font-size: 52px;
     margin: 0 0 10px;
     letter-spacing: 0.2px;

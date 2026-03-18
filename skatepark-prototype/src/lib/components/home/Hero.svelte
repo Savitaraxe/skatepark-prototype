@@ -36,7 +36,7 @@
   }
 
   .heroTitle {
-    font-family: "Wendy One", system-ui, sans-serif;
+    font-family: "Kanit", system-ui, sans-serif;
     font-size: 44px;
     line-height: 1.18;
     max-width: 900px;

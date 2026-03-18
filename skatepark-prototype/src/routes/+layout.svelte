@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&family=Wendy+One&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Raleway:wght@200;300;400;600;700;800&display=swap"
     rel="stylesheet"
   />
 </svelte:head>
@@ -141,6 +141,36 @@
     background: var(--bg);
     color: var(--text);
     font-family: "Raleway", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  :global(h1) {
+    font-family: "Kanit", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 80px;
+    letter-spacing: -2px;
+    margin: 0;
+  }
+
+  :global(h2) {
+    font-family: "Kanit", system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 50px;
+    letter-spacing: -2px;
+    margin: 0;
+  }
+
+  :global(h3) {
+    font-family: "Kanit", system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 50px;
+    letter-spacing: -2px;
+    margin: 0;
   }
 
   :global(*) {
@@ -208,8 +238,10 @@
     padding: 12px 14px;
     border-radius: 3px;
     color: var(--muted);
-    font-weight: 600;
-    line-height: 1;
+    font-family: "Raleway", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
     transition: background 120ms ease, color 120ms ease;
   }
 
