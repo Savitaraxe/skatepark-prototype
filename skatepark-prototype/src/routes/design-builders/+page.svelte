@@ -191,7 +191,7 @@
   <!-- Hero Section -->
   <section style="margin-top: 50px; padding: 0; background: white; display: flex; justify-content: center;">
     <div style="width: 100%; max-width: 1080px; height: auto; position: relative; overflow: hidden;">
-      <img src="/skatepark3.jpeg" alt="Skatepark" style="width: 100%; height: auto; object-fit: cover; display: block;" />
+      <img src="/designheroimage.avif" alt="Skatepark Design and Builders" style="width: 100%; height: auto; object-fit: cover; display: block;" />
       
       <!-- White overlay box with title -->
       <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.7); padding: 20px 40px; text-align: center;">

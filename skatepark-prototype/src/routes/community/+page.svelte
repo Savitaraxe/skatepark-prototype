@@ -15,7 +15,7 @@
   <section class="pageHero">
     <img
       class="heroImg"
-      src="/Screenshot 2024-03-16 at 11_19_01 AM.png"
+      src="/CommunityHeroImage.avif"
       alt="Community and Media"
     />
     <div class="heroBanner">

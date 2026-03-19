@@ -17,7 +17,7 @@
 <main>
   <!-- Hero -->
   <section class="pageHero">
-    <img class="heroImg" src="/skatepark3.jpeg" alt="Contact Utah Skatepark Advocacy Group" />
+    <img class="heroImg" src="/ContactUsHeroImage.avif" alt="Contact Utah Skatepark Advocacy Group" />
     <div class="heroBanner">
       <h1 class="heroTitle">Contact Us</h1>
     </div>

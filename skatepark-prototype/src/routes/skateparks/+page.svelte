@@ -510,7 +510,7 @@
 
 <!-- HERO -->
 <section class="heroWrap">
-  <img src="/skatepark-hero.jpg" alt="Utah Skateparks" class="heroImg" />
+  <img src="/SkateparksHeroImage.avif" alt="Utah Skateparks" class="heroImg" />
   <div class="heroBanner">
     <h1 class="heroTitle">Skateparks</h1>
   </div>
