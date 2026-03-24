@@ -17,9 +17,40 @@
     lights: string;
     type: string;
     access: string;
+    photo: string;
   };
 
   const skateparks: Skatepark[] = [
+    {
+      name: "All Together Skatepark",
+      city: "Salt Lake City",
+      status: "Complete",
+      sizeSqFt: "5000",
+      address: "660 South 400 West Suite 300, Salt Lake City, UT 84101",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "2022",
+      surface: "Wood",
+      lights: "Yes",
+      type: "Indoor",
+      access: "Paid",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Ashley Valley Skatepark",
+      city: "Vernal",
+      status: "Planning Phase",
+      sizeSqFt: "14500",
+      address: "1175 W 250 N, Vernal, UT 84078",
+      designedBy: "Skatewave",
+      builtBy: "Skatewave",
+      yearBuilt: "Unknown",
+      surface: "Steel",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Vernal Ashley Valley Skatepark.png"
+    },
     {
       name: "Bluffdale Skatepark",
       city: "Bluffdale",
@@ -32,7 +63,8 @@
       surface: "Concrete",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Bluffdale Skatepark.png"
     },
     {
       name: "Bountiful Skatepark",
@@ -46,21 +78,68 @@
       surface: "Concrete",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/NOPHOTO.png"
     },
     {
-      name: "Constitution Park Skatepark",
-      city: "Brigham City",
+      name: "Carry On Skatepark",
+      city: "Provo",
       status: "Complete",
-      sizeSqFt: "10500",
-      address: "450 E 700 S, Brigham City, UT 84302",
+      sizeSqFt: "0",
+      address: "244 West 100 South, Provo, UT 84601",
+      designedBy: "Ridge Ramps",
+      builtBy: "Ridge Ramps",
+      yearBuilt: "2024",
+      surface: "Wood",
+      lights: "Yes",
+      type: "Indoor",
+      access: "Paid",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Castle Dale Skatepark",
+      city: "Castle Dale",
+      status: "Complete",
+      sizeSqFt: "6100",
+      address: "240 S 500 E, Castle Dale, UT 84513",
       designedBy: "Unknown",
       builtBy: "Unknown",
-      yearBuilt: "1999",
-      surface: "Concrete",
+      yearBuilt: "Unknown",
+      surface: "Steel & Wood",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Castle Dale Skatepark.png"
+    },
+    {
+      name: "Cedar City Skatepark",
+      city: "Cedar City",
+      status: "Complete",
+      sizeSqFt: "12000",
+      address: "665 W 1045 N, Cedar City, UT 84721",
+      designedBy: "American Ramp Company",
+      builtBy: "American Ramp Company",
+      yearBuilt: "2024",
+      surface: "Steel",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Cedar City Skatepark.png"
+    },
+    {
+      name: "Clinton Skatepark",
+      city: "Clinton",
+      status: "Complete",
+      sizeSqFt: "6000",
+      address: "1711 1740 N, Clinton, UT 84015",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Steel & Wood",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Clinton Skatepark.png"
     },
     {
       name: "Coalville Skatepark",
@@ -74,21 +153,143 @@
       surface: "Steel",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Coalville Skatepark.png"
+    },
+    {
+      name: "Constitution Park Skatepark",
+      city: "Brigham City",
+      status: "Complete",
+      sizeSqFt: "10500",
+      address: "450 E 700 S, Brigham City, UT 84302",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "1999",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Brigham Constitutional Skatepark.png"
+    },
+    {
+      name: "Cook Family Park Skatepark",
+      city: "Pleasant Grove",
+      status: "Under Construction",
+      sizeSqFt: "15000",
+      address: "568 W 800 N, Pleasant Grove, UT 84062",
+      designedBy: "American Ramp Company",
+      builtBy: "Pivot Custom",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "Yes",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Copperview Skatepark",
+      city: "Midvale",
+      status: "Complete",
+      sizeSqFt: "11000",
+      address: "8446 Harrison St, Midvale, UT 84047",
+      designedBy: "Site Design Group",
+      builtBy: "Stapp Construction",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Midvale Copperview Skatepark.png"
+    },
+    {
+      name: "Crossroads Skatepark & Skate Shop",
+      city: "Ogden",
+      status: "Complete",
+      sizeSqFt: "9000",
+      address: "251 W 12th St, Ogden, UT 84404",
+      designedBy: "Crossroads",
+      builtBy: "Crossroads",
+      yearBuilt: "2008",
+      surface: "Wood",
+      lights: "Yes",
+      type: "Indoor",
+      access: "Paid",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Daybreak (Skateable Art)",
+      city: "South Jordan",
+      status: "Complete",
+      sizeSqFt: "20000",
+      address: "4513 Dorena Ln, South Jordan, UT 84095",
+      designedBy: "Spohn Ranch",
+      builtBy: "Spohn Ranch",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/South Jordan Daybreak Skatepark.png"
     },
     {
       name: "Delta Skatepark",
       city: "Delta",
       status: "Complete",
       sizeSqFt: "17000",
-      address: "115 N 100 W, Delta, UT 84624",
+      address: "115 N 100 W Rd, Delta, UT 84624",
       designedBy: "Unknown",
       builtBy: "Unknown",
       yearBuilt: "Unknown",
       surface: "Pre-fab Concrete",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Delta Skatepark.png"
+    },
+    {
+      name: "Dow James Memorial Skatepark",
+      city: "Tooele",
+      status: "Complete",
+      sizeSqFt: "6500",
+      address: "438 West 400 North Street, Tooele, UT 84074",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Tooele Dow James Skatepark.png"
+    },
+    {
+      name: "Eagle Mountain Skatepark",
+      city: "Eagle Mountain",
+      status: "Complete",
+      sizeSqFt: "9800",
+      address: "4593 Eagle Mountain Blvd, Eagle Mountain, UT 84005",
+      designedBy: "American Ramp Company",
+      builtBy: "American Ramp Company",
+      yearBuilt: "Unknown",
+      surface: "Steel",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Eagle Mountain Skatepark.png"
+    },
+    {
+      name: "Ellison Skatepark",
+      city: "Layton",
+      status: "Complete",
+      sizeSqFt: "16700",
+      address: "700 N 2200 W, Layton, UT 84041",
+      designedBy: "Site Design Group",
+      builtBy: "Stacey Construction",
+      yearBuilt: "2003",
+      surface: "Concrete",
+      lights: "Yes",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Layton Ellison Park.png"
     },
     {
       name: "Ephraim Skatepark",
@@ -102,21 +303,23 @@
       surface: "Concrete",
       lights: "Yes",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Epharim Skatepark.png"
     },
     {
-      name: "Firefly Skatepark",
-      city: "Fairfield",
+      name: "Fairmont Skatepark",
+      city: "Salt Lake City",
       status: "Complete",
-      sizeSqFt: "10000",
-      address: "2223 W Wander Ln, Fairfield, UT 84013",
-      designedBy: "Evergreen Skateparks",
-      builtBy: "Evergreen Skateparks",
-      yearBuilt: "2024",
+      sizeSqFt: "17915",
+      address: "2333 S 900 E, Salt Lake City, UT 84106",
+      designedBy: "Site Design Group",
+      builtBy: "Stapp Construction",
+      yearBuilt: "Unknown",
       surface: "Concrete",
-      lights: "No",
+      lights: "Yes",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/SLC Fairmont Skatepark.png"
     },
     {
       name: "Farmington Skatepark",
@@ -130,21 +333,68 @@
       surface: "Concrete",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Farmington Skatepark.png"
     },
     {
       name: "Fillmore Skatepark",
       city: "Fillmore",
       status: "Complete",
       sizeSqFt: "11900",
-      address: "434 N 100 E St, Fillmore, UT 84631",
+      address: "434 N 100 E St., Fillmore, UT 84631",
       designedBy: "Unknown",
       builtBy: "Unknown",
       yearBuilt: "Unknown",
       surface: "Steel",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Filimore North End Skate Park.png"
+    },
+    {
+      name: "Firefly Skatepark",
+      city: "Fairfield",
+      status: "Complete",
+      sizeSqFt: "10000",
+      address: "2223 W Wander Ln, Fairfield, UT 84013",
+      designedBy: "Evergreen Skateparks",
+      builtBy: "Evergreen Skateparks",
+      yearBuilt: "2024",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Fort Utah Skatepark",
+      city: "Provo",
+      status: "Planning Phase",
+      sizeSqFt: "6875",
+      address: "300 N Geneva Rd, Provo, UT 84601",
+      designedBy: "Spohn Ranch",
+      builtBy: "Spohn Ranch",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Provo Fort Utah Skatepark.png"
+    },
+    {
+      name: "Glendale Skatepark",
+      city: "Salt Lake City",
+      status: "Planning Phase",
+      sizeSqFt: "0",
+      address: "1700 W S, Salt Lake City, UT 84104",
+      designedBy: "California Skateparks",
+      builtBy: "To Be Determined",
+      yearBuilt: "Unknown",
+      surface: "Unknown",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/SLC Glendale Skatepark.png"
     },
     {
       name: "Grantsville Skatepark",
@@ -158,7 +408,8 @@
       surface: "Concrete",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Grantsville Skatepark.png"
     },
     {
       name: "Heber City Skatepark",
@@ -172,7 +423,8 @@
       surface: "Concrete",
       lights: "Yes",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Heber City Skatepark.png"
     },
     {
       name: "Herriman Skatepark",
@@ -186,7 +438,8 @@
       surface: "Concrete",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Herriman Skatepark Alt.png"
     },
     {
       name: "Holladay Skatepark",
@@ -200,7 +453,8 @@
       surface: "Concrete",
       lights: "Yes",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Holladay Skatepark.png"
     },
     {
       name: "Hyrum Skatepark",
@@ -214,7 +468,38 @@
       surface: "Concrete",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Hyrum Skatepark.png"
+    },
+    {
+      name: "Jeanie Stevens Skatepark",
+      city: "Tremonton",
+      status: "Complete",
+      sizeSqFt: "8490",
+      address: "735 N 980 W, Tremonton, UT 84337",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Tremonton Skatepark.png"
+    },
+    {
+      name: "Jordan / 9&9th Skatepark",
+      city: "Salt Lake City",
+      status: "Complete",
+      sizeSqFt: "12680",
+      address: "1400 N 1200 W, Salt Lake City, UT 84116",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/SLC 9th and 9th Skatepark.png"
     },
     {
       name: "Kanab Skatepark",
@@ -228,7 +513,53 @@
       surface: "Concrete",
       lights: "Yes",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Kanab Skatepark.png"
+    },
+    {
+      name: "Kearns Skatepark",
+      city: "Kearns",
+      status: "Complete",
+      sizeSqFt: "28500",
+      address: "5850 S 4800 W, Kearns, UT 84118",
+      designedBy: "Site Design Group",
+      builtBy: "Psomas Engineering Firm",
+      yearBuilt: "2010",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Kearns Skatepark.png"
+    },
+    {
+      name: "Kids That Rip (KTR) Skatepark",
+      city: "Midvale",
+      status: "Complete",
+      sizeSqFt: "10000",
+      address: "7220 Union Park Ave, Midvale, UT 84047",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "2020",
+      surface: "Wood",
+      lights: "Yes",
+      type: "Indoor",
+      access: "Paid",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Legacy Farms",
+      city: "Saratoga Springs",
+      status: "Private",
+      sizeSqFt: "0",
+      address: "379 E Willowstone Ln, Saratoga Springs, UT 84045",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Private",
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Lehi Skatepark",
@@ -242,7 +573,23 @@
       surface: "Concrete",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Little Valley Skatepark",
+      city: "St. George",
+      status: "Planning Phase",
+      sizeSqFt: "0",
+      address: "S 2350 E St, St. George, UT 84790",
+      designedBy: "Omega Ramps",
+      builtBy: "Omega Ramps",
+      yearBuilt: "Unknown",
+      surface: "Pre-fab Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Logan Skatepark",
@@ -256,7 +603,38 @@
       surface: "Concrete",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Lone Peak Skatepark",
+      city: "Sandy",
+      status: "Complete",
+      sizeSqFt: "28000",
+      address: "10140 S 700 E, Sandy, UT 84070",
+      designedBy: "Site Design Group",
+      builtBy: "Stapp",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "Yes",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Lorin Farr Skatepark",
+      city: "Ogden",
+      status: "Complete",
+      sizeSqFt: "12800",
+      address: "769 Canyon Rd, Ogden, UT 84404",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Magna Skatepark",
@@ -270,7 +648,8 @@
       surface: "Steel",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Millcreek Common",
@@ -284,21 +663,8 @@
       surface: "Concrete",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
-    },
-    {
-      name: "Moab Skatepark",
-      city: "Moab",
-      status: "Complete",
-      sizeSqFt: "6680",
-      address: "400 N 100 W, Moab, UT 84532",
-      designedBy: "Unknown",
-      builtBy: "Unknown",
-      yearBuilt: "Unknown",
-      surface: "Concrete",
-      lights: "No",
-      type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Millcreek Common.png"
     },
     {
       name: "North Ogden Skatepark",
@@ -312,7 +678,23 @@
       surface: "Concrete",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/North Ogden Skatepark.png"
+    },
+    {
+      name: "Oakley Skatepark",
+      city: "Oakley",
+      status: "Complete",
+      sizeSqFt: "10550",
+      address: "4122 Utah 32, Oakley, UT 84036",
+      designedBy: "Site Design Group",
+      builtBy: "Site Design Group",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Oakley Skatepark.png"
     },
     {
       name: "Orem Skatepark",
@@ -326,7 +708,8 @@
       surface: "Concrete",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Orem Skatepark.png"
     },
     {
       name: "Park City Skatepark",
@@ -340,7 +723,563 @@
       surface: "Concrete",
       lights: "No",
       type: "Outdoor",
-      access: "Public"
+      access: "Public",
+      photo: "/Park City Skatepark (Alt).png"
+    },
+    {
+      name: "Payson Skatepark",
+      city: "Payson",
+      status: "Complete",
+      sizeSqFt: "19500",
+      address: "68 E 600 S, Payson, UT 84651",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "2007",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Payson Skatepark.png"
+    },
+    {
+      name: "Price Skatepark",
+      city: "Price",
+      status: "Complete",
+      sizeSqFt: "14365",
+      address: "1050 E 7th N, Price, UT 84501",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Price Skatepark.png"
+    },
+    {
+      name: "Providence Skatepark",
+      city: "Providence",
+      status: "Complete",
+      sizeSqFt: "12500",
+      address: "250 W 100 N, Providence, UT 84332",
+      designedBy: "Hunger Skateparks",
+      builtBy: "Hunger Skateparks",
+      yearBuilt: "2024",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Provo Plaza Skatepark",
+      city: "Provo",
+      status: "Complete",
+      sizeSqFt: "24000",
+      address: "320 500 N, Provo, UT 84601",
+      designedBy: "Spohn Ranch",
+      builtBy: "Spohn Ranch",
+      yearBuilt: "2013",
+      surface: "Concrete",
+      lights: "Yes",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Provo Plaza Skatepark.png"
+    },
+    {
+      name: "Richard L. Guthrie Skatepark",
+      city: "Cottonwood Heights",
+      status: "Complete",
+      sizeSqFt: "26000",
+      address: "2495 Bengal Blvd, Cottonwood Heights, UT 84121",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "Yes",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Richfield Skatepark",
+      city: "Richfield",
+      status: "Complete",
+      sizeSqFt: "6780",
+      address: "700 W 400 N, Richfield, UT 84701",
+      designedBy: "American Ramp Company",
+      builtBy: "American Ramp Company",
+      yearBuilt: "2022",
+      surface: "Steel",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Richfield Skatepark.png"
+    },
+    {
+      name: "Riverton Skatepark",
+      city: "Riverton",
+      status: "Complete",
+      sizeSqFt: "14225",
+      address: "1435 W 12600 S, Riverton, UT 84065",
+      designedBy: "Unknown",
+      builtBy: "Stapp Construction",
+      yearBuilt: "2005",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Riverside Park Skatepark",
+      city: "Morgan",
+      status: "Complete",
+      sizeSqFt: "4890",
+      address: "195 E 125 N, Morgan, UT 84050",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Steel",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Morgan Riverside Skatepark.png"
+    },
+    {
+      name: "Rosewood Park Skatepark",
+      city: "Salt Lake City",
+      status: "Complete",
+      sizeSqFt: "15625",
+      address: "1400 N 1200 W, Salt Lake City, UT 84116",
+      designedBy: "Site Design Group",
+      builtBy: "Site Design Group",
+      yearBuilt: "2007",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/SLC Rosewood Skatepark.png"
+    },
+    {
+      name: "Roy City Skatepark",
+      city: "Roy",
+      status: "Complete",
+      sizeSqFt: "8445",
+      address: "2900 W 4600 S, Roy, UT 84067",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Roy City Skatepark.png"
+    },
+    {
+      name: "Santaquin Skatepark",
+      city: "Santaquin",
+      status: "Planning Phase",
+      sizeSqFt: "0",
+      address: "No Location Announced",
+      designedBy: "American Ramp Company",
+      builtBy: "Not Approved Yet",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Sk8 George Skatepark",
+      city: "St. George",
+      status: "Complete",
+      sizeSqFt: "17000",
+      address: "171 E 1160 S, St. George, UT 84770",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "Yes",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Smith Fields Park",
+      city: "Draper",
+      status: "Complete",
+      sizeSqFt: "20500",
+      address: "13390 S 300 E, Draper, UT 84020",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Draper Smiths Fields Skate Park.png"
+    },
+    {
+      name: "Smith Ranch Park",
+      city: "Eagle Mountain",
+      status: "Complete",
+      sizeSqFt: "12000",
+      address: "3985 Smith Ranch Rd, Eagle Mountain, UT 84005",
+      designedBy: "Spohn Ranch",
+      builtBy: "Spohn Ranch",
+      yearBuilt: "2024",
+      surface: "Concrete",
+      lights: "Yes",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Smithfield Skatepark",
+      city: "Smithfield",
+      status: "Complete",
+      sizeSqFt: "8500",
+      address: "100 N 100 W, Smithfield, UT 84335",
+      designedBy: "Grindline Skateparks",
+      builtBy: "Grindline Skateparks",
+      yearBuilt: "2017",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Smithfield Skatepark.png"
+    },
+    {
+      name: "South Jordan Skatepark",
+      city: "South Jordan",
+      status: "Complete",
+      sizeSqFt: "17280",
+      address: "10866 S Redwood Rd, South Jordan, UT 84095",
+      designedBy: "Grindline Skateparks",
+      builtBy: "Grindline Skateparks",
+      yearBuilt: "2004",
+      surface: "Concrete",
+      lights: "Yes",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/South Jordan Skatepark.png"
+    },
+    {
+      name: "South Ogden Skatepark",
+      city: "South Ogden",
+      status: "Complete",
+      sizeSqFt: "20000",
+      address: "580 40th St, South Ogden, UT 84403",
+      designedBy: "Spohn Ranch",
+      builtBy: "Spohn Ranch",
+      yearBuilt: "2024",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "South Salt Lake",
+      city: "South Salt Lake",
+      status: "Planning Phase",
+      sizeSqFt: "0",
+      address: "No Location Announced",
+      designedBy: "Not Approved Yet",
+      builtBy: "Not Approved",
+      yearBuilt: "Unknown",
+      surface: "Unknown",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Spanish Fork Skatepark",
+      city: "Spanish Fork",
+      status: "Complete",
+      sizeSqFt: "10000",
+      address: "521 S 600 E, Spanish Fork, UT 84660",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Spanish Fork Skatepark.png"
+    },
+    {
+      name: "Spencer's Field Skatepark",
+      city: "Tooele",
+      status: "Complete",
+      sizeSqFt: "18000",
+      address: "Timpie Rd & S 810 W, Tooele, UT 84074",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Tooele Spencer Skatepark.png"
+    },
+    {
+      name: "Springville Skatepark",
+      city: "Springville",
+      status: "Complete",
+      sizeSqFt: "13840",
+      address: "260 S 700 E, Springville, UT 84663",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Steel",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Springville Skatepark.png"
+    },
+    {
+      name: "Stansbury Skatepark",
+      city: "Stansbury",
+      status: "Complete",
+      sizeSqFt: "4800",
+      address: "8 Plaza, Stansbury Park, UT 84074",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Sunset Skatepark",
+      city: "Sunset",
+      status: "Complete",
+      sizeSqFt: "5470",
+      address: "166 W 2400 N, Sunset, UT 84015",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Steel",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Sunset Skatepark.png"
+    },
+    {
+      name: "Swanny Park Skatepark",
+      city: "Moab",
+      status: "Complete",
+      sizeSqFt: "6680",
+      address: "400 N 100 W, Moab, UT 84532",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Moab Swanny Skatepark.png"
+    },
+    {
+      name: "Syracuse Skatepark",
+      city: "Syracuse",
+      status: "Complete",
+      sizeSqFt: "10000",
+      address: "Banbury Dr & W 1500 S, Syracuse, UT 84075",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Syracuse Skatepark.png"
+    },
+    {
+      name: "Taylorsville Skatepark",
+      city: "Taylorsville",
+      status: "Complete",
+      sizeSqFt: "8500",
+      address: "4743 Plymouth View Dr, Taylorsville, UT 84123",
+      designedBy: "Spohn Ranch",
+      builtBy: "Spohn Ranch",
+      yearBuilt: "2025",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Taylorsville Skatepark.png"
+    },
+    {
+      name: "Trailside Skatepark",
+      city: "Park City",
+      status: "Complete",
+      sizeSqFt: "16300",
+      address: "5715 Trailside Dr, Park City, UT 84098",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete / Steel",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Unity Park Skatepark",
+      city: "Ivins",
+      status: "Complete",
+      sizeSqFt: "8000",
+      address: "200 W 400 S, Ivins, UT 84738",
+      designedBy: "Spohn Ranch",
+      builtBy: "Spohn Ranch",
+      yearBuilt: "2019",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/Ivins Skatepark.png"
+    },
+    {
+      name: "Utero Indian Skatepark",
+      city: "Fort Duchesne",
+      status: "Complete",
+      sizeSqFt: "6500",
+      address: "6964 E 1000 S, Fort Duchesne, UT 84026",
+      designedBy: "Spohn Ranch",
+      builtBy: "Spohn Ranch",
+      yearBuilt: "2012",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Private",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Vans Skatepark",
+      city: "Salt Lake City",
+      status: "Complete",
+      sizeSqFt: "28000",
+      address: "1098 W 200 N, Salt Lake City, UT 84116",
+      designedBy: "California Skateparks",
+      builtBy: "California Skateparks",
+      yearBuilt: "2019",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/SLC Vans Skatepark.png"
+    },
+    {
+      name: "Veterans Skatepark",
+      city: "Monticello",
+      status: "Complete",
+      sizeSqFt: "6600",
+      address: "1st St N & N 100 E, Monticello, UT 84535",
+      designedBy: "Unknown",
+      builtBy: "Unknown",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Vineyard Skatepark",
+      city: "Vineyard",
+      status: "Planning Phase",
+      sizeSqFt: "0",
+      address: "125 South Main Street, Vineyard, UT 84059",
+      designedBy: "Hunger Skateparks",
+      builtBy: "Hunger Skateparks",
+      yearBuilt: "Unknown",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "Wasatch Academy Skatepark",
+      city: "Mt. Pleasant",
+      status: "Private",
+      sizeSqFt: "6000",
+      address: "200 S 200 W, Mt. Pleasant, UT 84647",
+      designedBy: "Spohn Ranch",
+      builtBy: "Spohn Ranch",
+      yearBuilt: "2017",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Private",
+      photo: "/Mt. Pleasant Wasatch Skatepark.png"
+    },
+    {
+      name: "Washington Wheels Park",
+      city: "Washington",
+      status: "Under Construction",
+      sizeSqFt: "35000",
+      address: "3730 Rolling Rock Dr, Washington, UT 84780",
+      designedBy: "Spohn Ranch",
+      builtBy: "Spohn Ranch",
+      yearBuilt: "2025",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/NOPHOTO.png"
+    },
+    {
+      name: "West Jordan Wheels Park",
+      city: "West Jordan",
+      status: "Complete",
+      sizeSqFt: "20000",
+      address: "8600 S Ron Wood Pkwy, West Jordan, UT 84081",
+      designedBy: "Spohn Ranch",
+      builtBy: "Spohn Ranch",
+      yearBuilt: "2024",
+      surface: "Concrete",
+      lights: "No",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/West Jordan Skatepark Alt.png"
+    },
+    {
+      name: "West Valley City Skatepark",
+      city: "West Valley City",
+      status: "Complete",
+      sizeSqFt: "31000",
+      address: "3189 S 5600 W, West Valley City, UT 84128",
+      designedBy: "Think Architecture",
+      builtBy: "Stapp Construction",
+      yearBuilt: "2016",
+      surface: "Concrete",
+      lights: "Yes",
+      type: "Outdoor",
+      access: "Public",
+      photo: "/West Valley City Skatepark Alt.png"
+    },
+    {
+      name: "Woodward Park City",
+      city: "Park City",
+      status: "Complete",
+      sizeSqFt: "10000",
+      address: "3863 Kilby Rd, Park City, UT 84098",
+      designedBy: "California Skateparks",
+      builtBy: "Jacobsen Construction",
+      yearBuilt: "2019",
+      surface: "Concrete",
+      lights: "Yes",
+      type: "Indoor",
+      access: "Paid",
+      photo: "/Park City Woodward Skatepark.png"
     }
   ];
 
@@ -436,6 +1375,29 @@
     }
   }
 
+  // ── Local static photo filename map ─────────────────────────────
+  // Maps park name → exact filename in /static/
+  const localPhotos: Record<string, string> = {
+    "Bluffdale Skatepark":         "Bluffdale Skatepark.png",
+    "Constitution Park Skatepark": "Brigham Constitutional Skatepark.png",
+    "Coalville Skatepark":         "Coalville Skatepark.png",
+    "Delta Skatepark":             "Delta Skatepark.png",
+    "Ephraim Skatepark":           "Epharim Skatepark.png",
+    "Farmington Skatepark":        "Farmington Skatepark.png",
+    "Fillmore Skatepark":          "Filimore North End Skate Park.png",
+    "Grantsville Skatepark":       "Grantsville Skatepark.png",
+    "Heber City Skatepark":        "Heber City Skatepark.png",
+    "Herriman Skatepark":          "Herriman Skatepark Alt.png",
+    "Holladay Skatepark":          "Holladay Skatepark.png",
+    "Hyrum Skatepark":             "Hyrum Skatepark.png",
+    "Kanab Skatepark":             "Kanab Skatepark.png",
+    "Millcreek Common":            "Millcreek Common.png",
+    "Moab Skatepark":              "Moab Swanny Skatepark.png",
+    "North Ogden Skatepark":       "North Ogden Skatepark.png",
+    "Orem Skatepark":              "Orem Skatepark.png",
+    "Park City Skatepark":         "Park City Woodward Skatepark.png",
+  };
+
   // ── Photo lazy-load state ────────────────────────────────────────
   type PhotoState = Record<string, string | null>;
   let photoState: PhotoState = {};
@@ -456,6 +1418,26 @@
   async function loadPhoto(p: Skatepark): Promise<void> {
     const k = keyFor(p);
     if (photoState[k] !== undefined) return;
+    const filename = localPhotos[p.name];
+    if (filename) {
+      photoState = { ...photoState, [k]: `/${filename}` };
+    } else {
+      // No local photo — fall back to API
+      photoState = { ...photoState, [k]: null };
+      try {
+        const qs = new URLSearchParams({ name: p.name, city: p.city, address: p.address }).toString();
+        const res = await fetch(`${base}/api/skatepark-photo?${qs}`);
+        if (!res.ok) throw new Error();
+        const data: { url: string | null } = await res.json();
+        photoState = { ...photoState, [k]: data.url ?? "" };
+      } catch {
+        photoState = { ...photoState, [k]: "" };
+      }
+    }
+  }
+
+  async function loadPhotoFallback(p: Skatepark): Promise<void> {
+    const k = keyFor(p);
     photoState = { ...photoState, [k]: null };
     try {
       const qs = new URLSearchParams({ name: p.name, city: p.city, address: p.address }).toString();
@@ -651,13 +1633,9 @@
       {#each filteredParks as p}
         <div class="card">
           <!-- photo area -->
-          <div class="photoArea" use:lazyPhoto={p}>
-            {#if getPhotoUrl(p)}
-              <img class="photoImg" src={getPhotoUrl(p)} alt={"Photo of " + p.name} loading="lazy" />
-            {:else}
-              {#if isLoading(p)}
-                <div class="photoLoading"></div>
-              {/if}
+          <div class="photoArea">
+            {#if p.photo}
+              <img class="photoImg" src={p.photo} alt={"Photo of " + p.name} loading="lazy" />
             {/if}
 
             <div class="photoBtns">
