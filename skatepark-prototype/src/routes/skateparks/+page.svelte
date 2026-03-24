@@ -49,7 +49,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Vernal Ashley Valley Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Bluffdale Skatepark",
@@ -64,7 +64,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Bluffdale Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Bountiful Skatepark",
@@ -109,7 +109,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Castle Dale Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Cedar City Skatepark",
@@ -124,7 +124,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Cedar City Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Clinton Skatepark",
@@ -139,7 +139,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Clinton Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Coalville Skatepark",
@@ -154,7 +154,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Coalville Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Constitution Park Skatepark",
@@ -169,7 +169,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Brigham Constitutional Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Cook Family Park Skatepark",
@@ -199,7 +199,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Midvale Copperview Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Crossroads Skatepark & Skate Shop",
@@ -229,7 +229,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/South Jordan Daybreak Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Delta Skatepark",
@@ -244,7 +244,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Delta Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Dow James Memorial Skatepark",
@@ -259,7 +259,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Tooele Dow James Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Eagle Mountain Skatepark",
@@ -274,7 +274,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Eagle Mountain Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Ellison Skatepark",
@@ -289,7 +289,7 @@
       lights: "Yes",
       type: "Outdoor",
       access: "Public",
-      photo: "/Layton Ellison Park.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Ephraim Skatepark",
@@ -304,7 +304,7 @@
       lights: "Yes",
       type: "Outdoor",
       access: "Public",
-      photo: "/Epharim Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Fairmont Skatepark",
@@ -319,7 +319,7 @@
       lights: "Yes",
       type: "Outdoor",
       access: "Public",
-      photo: "/SLC Fairmont Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Farmington Skatepark",
@@ -334,7 +334,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Farmington Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Fillmore Skatepark",
@@ -349,7 +349,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Filimore North End Skate Park.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Firefly Skatepark",
@@ -379,7 +379,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Provo Fort Utah Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Glendale Skatepark",
@@ -394,7 +394,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/SLC Glendale Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Grantsville Skatepark",
@@ -409,7 +409,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Grantsville Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Heber City Skatepark",
@@ -424,7 +424,7 @@
       lights: "Yes",
       type: "Outdoor",
       access: "Public",
-      photo: "/Heber City Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Herriman Skatepark",
@@ -439,7 +439,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Herriman Skatepark Alt.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Holladay Skatepark",
@@ -454,7 +454,7 @@
       lights: "Yes",
       type: "Outdoor",
       access: "Public",
-      photo: "/Holladay Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Hyrum Skatepark",
@@ -469,7 +469,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Hyrum Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Jeanie Stevens Skatepark",
@@ -484,7 +484,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Tremonton Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Jordan / 9&9th Skatepark",
@@ -499,7 +499,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/SLC 9th and 9th Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Kanab Skatepark",
@@ -514,7 +514,7 @@
       lights: "Yes",
       type: "Outdoor",
       access: "Public",
-      photo: "/Kanab Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Kearns Skatepark",
@@ -529,7 +529,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Kearns Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Kids That Rip (KTR) Skatepark",
@@ -664,7 +664,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Millcreek Common.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "North Ogden Skatepark",
@@ -679,7 +679,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/North Ogden Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Oakley Skatepark",
@@ -694,7 +694,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Oakley Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Orem Skatepark",
@@ -709,7 +709,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Orem Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Park City Skatepark",
@@ -724,7 +724,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Park City Skatepark (Alt).png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Payson Skatepark",
@@ -739,7 +739,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Payson Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Price Skatepark",
@@ -754,7 +754,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Price Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Providence Skatepark",
@@ -784,7 +784,7 @@
       lights: "Yes",
       type: "Outdoor",
       access: "Public",
-      photo: "/Provo Plaza Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Richard L. Guthrie Skatepark",
@@ -814,7 +814,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Richfield Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Riverton Skatepark",
@@ -844,7 +844,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Morgan Riverside Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Rosewood Park Skatepark",
@@ -859,7 +859,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/SLC Rosewood Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Roy City Skatepark",
@@ -874,7 +874,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Roy City Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Santaquin Skatepark",
@@ -919,7 +919,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Draper Smiths Fields Skate Park.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Smith Ranch Park",
@@ -949,7 +949,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Smithfield Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "South Jordan Skatepark",
@@ -964,7 +964,7 @@
       lights: "Yes",
       type: "Outdoor",
       access: "Public",
-      photo: "/South Jordan Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "South Ogden Skatepark",
@@ -1009,7 +1009,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Spanish Fork Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Spencer's Field Skatepark",
@@ -1024,7 +1024,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Tooele Spencer Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Springville Skatepark",
@@ -1039,7 +1039,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Springville Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Stansbury Skatepark",
@@ -1069,7 +1069,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Sunset Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Swanny Park Skatepark",
@@ -1084,7 +1084,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Moab Swanny Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Syracuse Skatepark",
@@ -1099,7 +1099,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Syracuse Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Taylorsville Skatepark",
@@ -1114,7 +1114,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Taylorsville Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Trailside Skatepark",
@@ -1144,7 +1144,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/Ivins Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Utero Indian Skatepark",
@@ -1174,7 +1174,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/SLC Vans Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Veterans Skatepark",
@@ -1219,7 +1219,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Private",
-      photo: "/Mt. Pleasant Wasatch Skatepark.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Washington Wheels Park",
@@ -1249,7 +1249,7 @@
       lights: "No",
       type: "Outdoor",
       access: "Public",
-      photo: "/West Jordan Skatepark Alt.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "West Valley City Skatepark",
@@ -1264,7 +1264,7 @@
       lights: "Yes",
       type: "Outdoor",
       access: "Public",
-      photo: "/West Valley City Skatepark Alt.png"
+      photo: "/NOPHOTO.png"
     },
     {
       name: "Woodward Park City",
@@ -1279,7 +1279,7 @@
       lights: "Yes",
       type: "Indoor",
       access: "Paid",
-      photo: "/Park City Woodward Skatepark.png"
+      photo: "/NOPHOTO.png"
     }
   ];
 
