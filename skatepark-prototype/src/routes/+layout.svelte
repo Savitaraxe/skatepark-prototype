@@ -9,7 +9,7 @@
     { label: "Home", href: "/" },
     { label: "Skateparks", href: "/skateparks" },
     { label: "Planning and Resources", href: "/resources" },
-    { label: "Community", href: "/community" },
+    { label: "News and Community", href: "/community" },
     // IMPORTANT: make this go to home + hash, not just "#contact"
     { label: "Contact Us", href: "/contact" }
   ];
@@ -160,7 +160,7 @@
     font-weight: 500;
     font-size: 48px;
     line-height: 50px;
-    letter-spacing: -2px;
+    letter-spacing: 0;
     margin: 0;
   }
 
@@ -169,7 +169,7 @@
     font-weight: 400;
     font-size: 36px;
     line-height: 50px;
-    letter-spacing: -2px;
+    letter-spacing: 0;
     margin: 0;
   }
 

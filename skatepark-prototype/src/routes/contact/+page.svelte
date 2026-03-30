@@ -83,6 +83,7 @@
     width: 100%;
     height: 320px;
     object-fit: cover;
+    object-position: top;
     display: block;
   }
 

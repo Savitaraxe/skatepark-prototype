@@ -13,11 +13,7 @@
 <main>
   <!-- Hero -->
   <section class="pageHero">
-    <img
-      class="heroImg"
-      src="/CommunityHeroImage.avif"
-      alt="Community and Media"
-    />
+    <img class="heroImg" src="/CommunityHeroImage.avif" alt="Community and Media" />
     <div class="heroBanner">
       <h1 class="heroTitle">Community and Media</h1>
     </div>
@@ -29,8 +25,8 @@
       <h2 class="sectionTitle">Latest News</h2>
       <p class="sectionText">
         For those who want to keep up to date with everything about skateparks in the state of
-        Utah. If you hear about a news story that needs to be showcased, reach out to us with
-        a link to the article!
+        Utah. If you hear about a news story that needs to be showcased, reach out to us with a
+        link to the article!
       </p>
       <a class="ctaBtn" href="/news">View Latest News</a>
     </div>
@@ -41,11 +37,12 @@
     <div class="inner">
       <h2 class="sectionTitle">Community</h2>
       <p class="sectionText">
-        USAG isn't the only non-profit that helps enrich the lives of Utah skaters! Learn more
-        about the community partners that help make skateboarding more accessible for riders of
-        all ages and backgrounds.
+        If you're looking for more information about helping USAG develop upcoming projects, our
+        team has included links to websites and documents that can help get you started. If you're
+        seeking to volunteer with USAG directly, please visit our Contact Us page to send us an
+        email about joining our team.
       </p>
-      <a class="ctaBtn" href="/resources">View Resources</a>
+      <a class="ctaBtn" href="/community/partners">View Community</a>
     </div>
   </section>
 
@@ -66,6 +63,7 @@
     width: 100%;
     height: 320px;
     object-fit: cover;
+    object-position: top;
     display: block;
   }
 
@@ -135,6 +133,7 @@
     color: var(--white);
   }
 
+  /* ── Responsive ─────────────────────────────────────────────────── */
   @media (max-width: 640px) {
     .heroImg {
       height: 220px;

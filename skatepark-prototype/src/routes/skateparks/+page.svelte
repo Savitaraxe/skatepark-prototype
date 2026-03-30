@@ -1290,10 +1290,14 @@
   let filterSurfaces = new Set<string>();
   let filterLights = new Set<string>();
   let filterSizes = new Set<string>(); // "small" | "medium" | "large"
+  let filterTypes = new Set<string>();
+  let filterAccess = new Set<string>();
 
   // Static option lists derived from data (computed once)
   const statusOptions = [...new Set(skateparks.map((p) => p.status))].sort();
   const surfaceOptions = [...new Set(skateparks.map((p) => p.surface))].sort();
+  const typeOptions = [...new Set(skateparks.map((p) => p.type))].sort();
+  const accessOptions = [...new Set(skateparks.map((p) => p.access))].sort();
 
   const sortOptions = [
     { value: "name-asc",  label: "Name A–Z" },
@@ -1327,6 +1331,8 @@
       if (filterSurfaces.size > 0 && !filterSurfaces.has(p.surface)) return false;
       if (filterLights.size > 0 && !filterLights.has(p.lights)) return false;
       if (filterSizes.size > 0 && !filterSizes.has(sizeCategory(p.sizeSqFt))) return false;
+      if (filterTypes.size > 0 && !filterTypes.has(p.type)) return false;
+      if (filterAccess.size > 0 && !filterAccess.has(p.access)) return false;
       return true;
     })
     .sort((a, b) => {
@@ -1348,7 +1354,7 @@
     });
 
   $: activeFilterCount =
-    filterStatuses.size + filterSurfaces.size + filterLights.size + filterSizes.size;
+    filterStatuses.size + filterSurfaces.size + filterLights.size + filterSizes.size + filterTypes.size + filterAccess.size;
   $: hasActiveFilters = activeFilterCount > 0 || sortBy !== "name-asc";
 
   function toggleChip(set: Set<string>, value: string): Set<string> {
@@ -1363,6 +1369,8 @@
     filterSurfaces = new Set();
     filterLights = new Set();
     filterSizes = new Set();
+    filterTypes = new Set();
+    filterAccess = new Set();
     sortBy = "name-asc";
   }
 
@@ -1605,6 +1613,34 @@
               {/each}
             </div>
           </div>
+
+          <div class="panelSection">
+            <div class="sectionLabel">Type</div>
+            <div class="chipRow">
+              {#each typeOptions as t}
+                <button
+                  type="button"
+                  class="chip"
+                  class:chipActive={filterTypes.has(t)}
+                  on:click={() => (filterTypes = toggleChip(filterTypes, t))}
+                >{t}</button>
+              {/each}
+            </div>
+          </div>
+
+          <div class="panelSection">
+            <div class="sectionLabel">Access</div>
+            <div class="chipRow">
+              {#each accessOptions as a}
+                <button
+                  type="button"
+                  class="chip"
+                  class:chipActive={filterAccess.has(a)}
+                  on:click={() => (filterAccess = toggleChip(filterAccess, a))}
+                >{a}</button>
+              {/each}
+            </div>
+          </div>
         </div>
 
         {#if hasActiveFilters}
@@ -1638,10 +1674,6 @@
               <img class="photoImg" src={p.photo} alt={"Photo of " + p.name} loading="lazy" />
             {/if}
 
-            <div class="photoBtns">
-              <button type="button" class="pillBtn">+ Add Photo</button>
-              <button type="button" class="pillsubmitBtn">Submit</button>
-            </div>
           </div>
 
           <!-- always-visible basic info -->
@@ -1750,6 +1782,7 @@
     height: 320px;
     display: block;
     object-fit: cover;
+    object-position: top;
   }
 
   .heroBanner {
@@ -1969,7 +2002,7 @@
   .cardsGrid {
     display: grid;
     grid-template-columns: repeat(3, 280px);
-    gap: 24px;
+    gap: 36px;
     justify-content: center;
   }
 
@@ -1977,6 +2010,10 @@
     width: 280px;
     display: flex;
     flex-direction: column;
+    border: 1.5px solid #c0b8b4;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .photoArea {
@@ -2050,19 +2087,25 @@
   /* ── Basic always-visible info ────────────────────────────────── */
   .cardBasic {
     background: #dfdfdf;
-    padding: 12px 14px 14px;
+    padding: 14px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
   }
 
   .parkName {
     font: 400 20px Oswald, sans-serif;
     color: #000;
     margin: 0;
+    width: 100%;
   }
 
   .parkCity {
     font: 400 13px Raleway, sans-serif;
     color: #555;
     margin-top: 2px;
+    width: 100%;
   }
 
   .parkAddress {
@@ -2070,14 +2113,17 @@
     color: #000;
     margin-top: 6px;
     line-height: 1.4;
+    width: 100%;
   }
 
   .detailsBtn {
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
-    margin-top: 10px;
+    margin-top: auto;
     padding: 6px 14px;
+    width: 100%;
     background: #ffc03a;
     border: 1.5px solid #1a1a1a;
     border-radius: 3px;
@@ -2133,6 +2179,7 @@
   @media (max-width: 900px) {
     .cardsGrid {
       grid-template-columns: repeat(2, 280px);
+      gap: 28px;
     }
 
     .panelGrid {

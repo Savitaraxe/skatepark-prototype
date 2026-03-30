@@ -133,6 +133,7 @@
     width: 100%;
     height: 420px;
     object-fit: cover;
+    object-position: top;
     display: block;
   }
 
